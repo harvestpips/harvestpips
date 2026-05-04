@@ -411,7 +411,7 @@ export default function App() {
             />
             <TestiCard 
               quote={<>
-                Kami sempat kewalahan mengurus administrasi keuangan sambil fokus jualan. Sejak dibantu<span className="font-bold tracking-[0.05em] text-dark not-italic">HARVESTPIPS</span>, pembukuan jadi rapi dan kami bisa lebih fokus mengembangkan bisnis parfum kami.
+                Kami sempat kewalahan mengurus administrasi keuangan sambil fokus jualan. Sejak dibantu <span className="font-bold tracking-[0.05em] text-dark not-italic">HARVESTPIPS</span>, pembukuan jadi rapi dan kami bisa lebih fokus mengembangkan bisnis parfum kami.
               </>}
               author="Ismail Mardianto"
               role="Owner Xperfumery Parfum. Surabaya, Jawa Timur"
