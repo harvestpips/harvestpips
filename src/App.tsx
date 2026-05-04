@@ -158,7 +158,7 @@ export default function App() {
               transition={{ delay: 0.2 }}
               className="font-serif italic text-xl lg:text-2xl text-muted mb-8"
             >
-              Tumbuh Bersama, Panen Hasilnya.
+              Finansial Tertakar, Bisnis Makin Besar.
             </motion.div>
             <motion.p 
               initial={{ opacity: 0, y: 20 }}
@@ -166,7 +166,7 @@ export default function App() {
               transition={{ delay: 0.3 }}
               className="text-mid text-sm lg:text-base leading-relaxed mb-10 max-w-md font-light"
             >
-              Satu mitra strategis untuk dua dunia — bisnis nyata di lapangan dan peluang di pasar finansial. Kami mendampingi UMKM tumbuh dan trader berkembang, dengan cara yang membumi dan terukur.
+              Satu mitra strategis untuk bisnis nyata di lapangan dan peluang di pasar finansial. Kami dampingi trader dan pelaku UMKM membangun bisnis yang kuat dan finansial yang sehat.
             </motion.p>
             <motion.div 
               initial={{ opacity: 0, y: 20 }}
