@@ -409,6 +409,20 @@ export default function App() {
               author="Agus Santoso"
               role="Owner PT AGS Anugerah Gemilang Sejati. Jombang, Jawa Timur"
             />
+            <TestiCard 
+              quote={<>
+                Kami sempat kewalahan mengurus administrasi keuangan sambil fokus jualan. Sejak dibantu<span className="font-bold tracking-[0.05em] text-dark not-italic">HARVESTPIPS</span>, pembukuan jadi rapi dan kami bisa lebih fokus mengembangkan bisnis parfum kami.
+              </>}
+              author="Ismail Mardianto"
+              role="Owner Xperfumery Parfum. Surabaya, Jawa Timur"
+            />
+            <TestiCard 
+              quote={<>
+                <span className="font-bold tracking-[0.05em] text-dark not-italic">HARVESTPIPS</span> membantu kami mengelola laporan keuangan dan perpajakan perusahaan dengan sangat profesional. Prosesnya cepat, transparan, dan hasilnya bisa kami pertanggungjawabkan ke semua pihak.
+              </>}
+              author="Samsul Bahri"
+              role="Direktur CV Almas Karunia Semesta. Bengkulu Utara, Bengkulu"
+            />
           </div>
         </div>
       </section>
@@ -430,7 +444,7 @@ export default function App() {
               JADWALKAN SEKARANG
             </a>
             <a 
-              href="https://wa.me/6285183153125" 
+              href="https://wa.me/6285183153125?text=Halo%20HARVESTPIPS%2C%20saya%20tertarik%20untuk%20konsultasi." 
               target="_blank" 
               rel="noopener noreferrer"
               className="border-2 border-dark text-dark hover:bg-dark hover:text-gold font-bold tracking-widest text-[11px] px-10 py-5 rounded transition-all text-center"
@@ -443,7 +457,7 @@ export default function App() {
 
       {/* Floating WhatsApp Button */}
       <motion.a
-        href="https://wa.me/6285183153125"
+        href="https://wa.me/6285183153125?text=Halo%20HARVESTPIPS%2C%20saya%20tertarik%20untuk%20konsultasi."
         target="_blank"
         rel="noopener noreferrer"
         initial={{ scale: 0, opacity: 0 }}
