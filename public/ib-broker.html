@@ -7,7 +7,7 @@
   <meta name="description" content="Daftar trading melalui Harvest Pips Management sebagai Introducing Broker resmi. Dapatkan rebate, spread kompetitif, dan dukungan penuh dari tim profesional." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,600&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,600&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&family=Barlow+Condensed:wght@700;800&display=swap" rel="stylesheet" />
 
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -158,15 +158,15 @@
     .sec { padding: 80px 48px; }
     .sec-cream { background: var(--cream); }
     .sec-dark  { background: #0A1019; }
-    .sec-green { background: var(--green-dark); }
+    .sec-green  { background: #080F18; }
     .sec-eyebrow { font-size: 10px; letter-spacing: 0.22em; color: var(--gold-muted); margin-bottom: 10px; }
-    .sec-eyebrow-light { font-size: 10px; letter-spacing: 0.22em; color: #6AAA50; opacity: 0.7; margin-bottom: 10px; }
+    .sec-eyebrow-light { font-size: 10px; letter-spacing: 0.22em; color: var(--gold-muted); opacity: 0.7; margin-bottom: 10px; }
     .sec-h {
       font-family: 'Cormorant Garamond', serif;
       font-size: 36px; font-weight: 400; color: var(--dark);
       line-height: 1.2; margin-bottom: 6px;
     }
-    .sec-h em { font-style: italic; color: var(--green-dark); }
+    .sec-h em { font-style: italic; color: var(--gold-dim); }
     .sec-h-light {
       font-family: 'Cormorant Garamond', serif;
       font-size: 36px; font-weight: 400; color: #EEE8D8;
@@ -256,21 +256,36 @@
     .rebate-note p { font-size: 11px; color: #B8A050; line-height: 1.7; }
 
     /* SUB IB */
-    .subib-section { background: var(--green-dark); padding: 80px 48px; }
+    .subib-section {
+      background: #060C16;
+      padding: 80px 48px;
+      border-top: 0.5px solid #1E293B;
+      position: relative;
+      overflow: hidden;
+    }
+    .subib-section::before {
+      content: '';
+      position: absolute;
+      top: -120px; right: -120px;
+      width: 400px; height: 400px;
+      background: radial-gradient(circle, rgba(245,194,0,0.06) 0%, transparent 70%);
+      pointer-events: none;
+    }
     .subib-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
     .subib-l .sec-eyebrow-light { margin-bottom: 10px; }
+    .sec-eyebrow-light { font-size: 10px; letter-spacing: 0.22em; color: var(--gold-muted); opacity: 0.85; margin-bottom: 10px; }
     .subib-title {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 36px; font-weight: 400; color: #D8E8D0;
+      font-size: 36px; font-weight: 400; color: #EEE8D8;
       line-height: 1.25; margin-bottom: 18px;
     }
     .subib-title em { font-style: italic; color: var(--gold); }
-    .subib-desc { font-size: 13px; color: var(--green-txt); line-height: 1.88; font-weight: 300; opacity: 0.85; margin-bottom: 28px; }
+    .subib-desc { font-size: 13px; color: #64748B; line-height: 1.88; font-weight: 300; margin-bottom: 28px; }
     .subib-perks { display: flex; flex-direction: column; gap: 12px; margin-bottom: 32px; }
     .subib-perk { display: flex; gap: 12px; align-items: flex-start; }
     .subib-dash { width: 18px; height: 1px; background: var(--gold); margin-top: 9px; flex-shrink: 0; }
-    .subib-perk-txt { font-size: 13px; color: var(--green-txt); opacity: 0.8; line-height: 1.65; }
-    .subib-perk-txt strong { color: var(--gold); font-weight: 500; opacity: 1; }
+    .subib-perk-txt { font-size: 13px; color: #7B91AC; line-height: 1.65; }
+    .subib-perk-txt strong { color: var(--gold); font-weight: 500; }
     .btn-subib {
       background: var(--gold); color: var(--dark);
       font-size: 12px; font-weight: 500; letter-spacing: 0.08em;
@@ -282,22 +297,22 @@
 
     .subib-tiers { display: flex; flex-direction: column; gap: 1px; }
     .tier {
-      background: var(--green-darker); border: 0.5px solid #1A3010;
+      background: #0A1525; border: 0.5px solid #1A2540;
       padding: 20px 24px; display: flex; align-items: center; justify-content: space-between;
-      transition: background 0.2s;
+      transition: background 0.2s, border-color 0.2s;
     }
-    .tier:hover { background: #1A3A10; }
-    .tier.featured { background: var(--gold); }
-    .tier-name { font-size: 13px; font-weight: 500; color: #6AAA50; letter-spacing: 0.06em; }
+    .tier:hover { background: #0E1C30; border-color: #243558; }
+    .tier.featured { background: var(--gold); border-color: var(--gold); }
+    .tier-name { font-size: 13px; font-weight: 500; color: #4A6080; letter-spacing: 0.06em; }
     .tier.featured .tier-name { color: var(--dark); }
-    .tier-req { font-size: 11px; color: #3A5A30; margin-top: 3px; }
+    .tier-req { font-size: 11px; color: #2A3A50; margin-top: 3px; }
     .tier.featured .tier-req { color: var(--gold-muted); }
     .tier-commission {
       font-family: 'Cormorant Garamond', serif;
       font-size: 26px; font-weight: 600; color: var(--gold); line-height: 1;
     }
     .tier.featured .tier-commission { color: var(--dark); }
-    .tier-commission-unit { font-size: 10px; color: #3A5A30; font-family: 'DM Sans', sans-serif; text-align: right; margin-top: 2px; }
+    .tier-commission-unit { font-size: 10px; color: #2A3A50; font-family: 'DM Sans', sans-serif; text-align: right; margin-top: 2px; }
     .tier.featured .tier-commission-unit { color: var(--gold-muted); }
     .tier-badge {
       font-size: 9px; letter-spacing: 0.14em; background: var(--dark);
@@ -362,7 +377,77 @@
     .footer-bot { border-top: 0.5px solid #0D1520; padding-top: 20px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; }
     .ft-copy { font-size: 11px; color: #2D4060; }
 
-    /* RESPONSIVE */
+    /* BROKER BRAND ACCENTS — warna brand resmi masing-masing */
+
+    /* Exness — Kuning ikonik #FFDE02 di atas navy gelap #070E20 */
+    .broker-card[data-broker="exness"] .broker-card-header {
+      background: #070E20;
+      border-bottom: 2px solid #FFDE02;
+    }
+    .broker-card[data-broker="exness"] .broker-name { color: #FFDE02; font-weight: 700; letter-spacing: 0.02em; }
+    .broker-card[data-broker="exness"] .broker-reg { background: #0E1A38; border-color: #1E2D54; color: #A8BDD8; }
+    .broker-card[data-broker="exness"] .broker-cta { background: #FFDE02; color: #070E20; }
+    .broker-card[data-broker="exness"] .broker-cta:hover { background: #E6CC00; }
+    .broker-card[data-broker="exness"] .b-check { background: #FFDE02; }
+    .broker-card[data-broker="exness"] .b-check svg path { stroke: #070E20; }
+
+    /* Vantage — Oranye khas #FF6B35 (brand resmi Vantage Markets) */
+    .broker-card[data-broker="vantage"] .broker-card-header {
+      background: #180A02;
+      border-bottom: 2px solid #FF6B35;
+    }
+    .broker-card[data-broker="vantage"] .broker-name { color: #FF8055; font-weight: 600; }
+    .broker-card[data-broker="vantage"] .broker-reg { background: #1E0D03; border-color: #3A1A08; color: #D4906A; }
+    .broker-card[data-broker="vantage"] .broker-cta { background: #FF6B35; color: #fff; }
+    .broker-card[data-broker="vantage"] .broker-cta:hover { background: #E5561F; }
+    .broker-card[data-broker="vantage"] .b-check { background: #FF6B35; }
+    .broker-card[data-broker="vantage"] .b-check svg path { stroke: #fff; }
+
+    /* Markets4You — Hijau cerah Phoenix #3DDC84 / teal-green brand baru */
+    .broker-card[data-broker="m4y"] .broker-card-header {
+      background: #021A12;
+      border-bottom: 2px solid #00C48C;
+    }
+    .broker-card[data-broker="m4y"] .broker-name { color: #00E0A0; font-weight: 600; letter-spacing: 0.01em; }
+    .broker-card[data-broker="m4y"] .broker-reg { background: #021A12; border-color: #043825; color: #6ACCA0; }
+    .broker-card[data-broker="m4y"] .broker-cta { background: #00C48C; color: #021A12; }
+    .broker-card[data-broker="m4y"] .broker-cta:hover { background: #00A876; }
+    .broker-card[data-broker="m4y"] .b-check { background: #00C48C; }
+    .broker-card[data-broker="m4y"] .b-check svg path { stroke: #021A12; }
+
+    /* Fusion Markets — Ungu khas #7B2FBE (warna ikon live chat & brand mereka) */
+    .broker-card[data-broker="fusion"] .broker-card-header {
+      background: #0E0818;
+      border-bottom: 2px solid #7B2FBE;
+    }
+    .broker-card[data-broker="fusion"] .broker-name { color: #B06EE8; font-weight: 600; }
+    .broker-card[data-broker="fusion"] .broker-reg { background: #140A22; border-color: #2A1244; color: #B090D8; }
+    .broker-card[data-broker="fusion"] .broker-cta { background: #7B2FBE; color: #fff; }
+    .broker-card[data-broker="fusion"] .broker-cta:hover { background: #6520A0; }
+    .broker-card[data-broker="fusion"] .b-check { background: #7B2FBE; }
+    .broker-card[data-broker="fusion"] .b-check svg path { stroke: #fff; }
+
+    /* B2Prime — Hijau-putih clean, #00D4AA / teal institusional dari brand B2 Group */
+    .broker-card[data-broker="b2prime"] .broker-card-header {
+      background: #020F12;
+      border-bottom: 2px solid #00B4A0;
+    }
+    .broker-card[data-broker="b2prime"] .broker-name { color: #00D4C0; font-weight: 700; letter-spacing: 0.04em; }
+    .broker-card[data-broker="b2prime"] .broker-reg { background: #021418; border-color: #043038; color: #5AC8C0; }
+    .broker-card[data-broker="b2prime"] .broker-cta { background: #00B4A0; color: #020F12; }
+    .broker-card[data-broker="b2prime"] .broker-cta:hover { background: #009888; }
+    .broker-card[data-broker="b2prime"] .b-check { background: #00B4A0; }
+    .broker-card[data-broker="b2prime"] .b-check svg path { stroke: #020F12; }
+
+    /* Exness stat number — sans-serif bersih, angka 1 tidak mirip romawi */
+    .exness-stat {
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 500;
+      font-size: 16px;
+      letter-spacing: 0;
+      color: #1A1A1A;
+      line-height: 1;
+    }
     @media (max-width: 900px) {
       .nav { padding: 16px 24px; }
       .ib-hero { grid-template-columns: 1fr; padding: 48px 24px; }
@@ -450,14 +535,14 @@
     <h2 class="sec-h">Pilih Broker yang <em>Tepat untuk Anda</em></h2>
     <div class="sec-sub">Kami bermitra dengan broker global teregulasi — masing-masing dengan keunggulan berbeda.</div>
     <div class="broker-grid">
-      <div class="broker-card">
+      <div class="broker-card" data-broker="exness">
         <div class="broker-card-header">
           <div class="broker-name">Exness</div>
           <div class="broker-reg">REG: CySEC · FCA · FSCA</div>
         </div>
         <div class="broker-card-body">
           <p class="broker-tagline">Pilihan utama trader forex Indonesia — spread ultra-rendah, leverage fleksibel, dan deposit/withdraw via bank lokal tanpa biaya.</p>
-          <div class="broker-stats"><div class="b-stat"><div class="b-stat-n">0.0</div><div class="b-stat-l">Spread mulai (pip)</div></div><div class="b-stat"><div class="b-stat-n">1:Unlimited</div><div class="b-stat-l">Leverage (Pro)</div></div><div class="b-stat"><div class="b-stat-n">$10</div><div class="b-stat-l">Deposit minimum</div></div></div>
+          <div class="broker-stats"><div class="b-stat"><div class="b-stat-n">0.0</div><div class="b-stat-l">Spread mulai (pip)</div></div><div class="b-stat"><div class="b-stat-n exness-stat">1:Unlimited</div><div class="b-stat-l">Leverage (Pro)</div></div><div class="b-stat"><div class="b-stat-n">$10</div><div class="b-stat-l">Deposit minimum</div></div></div>
           <div class="broker-benefits">
             <div class="b-benefit">
               <div class="b-check"><svg viewBox="0 0 9 9" fill="none"><path d="M1.5 4.5L3.5 6.5L7.5 2.5" stroke="#1A1A1A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
@@ -479,7 +564,7 @@
           <a href="https://wa.me/6285183153125?text=Halo%20Harvest%20Pips%2C%20saya%20ingin%20daftar%20IB%20Exness" target="_blank" class="broker-cta">DAFTAR LEWAT HARVESTPIPS →</a>
         </div>
       </div>
-      <div class="broker-card">
+      <div class="broker-card" data-broker="m4y">
         <div class="broker-card-header">
           <div class="broker-name">Markets4You</div>
           <div class="broker-reg">REG: FSA Seychelles</div>
@@ -508,7 +593,7 @@
           <a href="https://wa.me/6285183153125?text=Halo%20Harvest%20Pips%2C%20saya%20ingin%20daftar%20IB%20Markets4You" target="_blank" class="broker-cta">DAFTAR LEWAT HARVESTPIPS →</a>
         </div>
       </div>
-      <div class="broker-card">
+      <div class="broker-card" data-broker="vantage">
         <div class="broker-card-header">
           <div class="broker-name">Vantage</div>
           <div class="broker-reg">REG: ASIC · FCA · CIMA</div>
@@ -537,7 +622,7 @@
           <a href="https://wa.me/6285183153125?text=Halo%20Harvest%20Pips%2C%20saya%20ingin%20daftar%20IB%20Vantage" target="_blank" class="broker-cta">DAFTAR LEWAT HARVESTPIPS →</a>
         </div>
       </div>
-      <div class="broker-card">
+      <div class="broker-card" data-broker="fusion">
         <div class="broker-card-header">
           <div class="broker-name">Fusion Markets</div>
           <div class="broker-reg">REG: ASIC · VFSC</div>
@@ -566,7 +651,7 @@
           <a href="https://wa.me/6285183153125?text=Halo%20Harvest%20Pips%2C%20saya%20ingin%20daftar%20IB%20Fusion%20Markets" target="_blank" class="broker-cta">DAFTAR LEWAT HARVESTPIPS →</a>
         </div>
       </div>
-      <div class="broker-card">
+      <div class="broker-card" data-broker="b2prime">
         <div class="broker-card-header">
           <div class="broker-name">B2Prime</div>
           <div class="broker-reg">REG: MFSA Malta</div>
@@ -718,7 +803,7 @@
         <a href="#daftar" class="btn-subib">DAFTAR JADI SUB-IB →</a>
       </div>
       <div>
-        <div style="font-size:9px;letter-spacing:0.2em;color:#4A7A3A;margin-bottom:14px;">STRUKTUR KOMISI SUB-IB</div>
+        <div style="font-size:9px;letter-spacing:0.2em;color:var(--gold-muted);margin-bottom:14px;">STRUKTUR KOMISI SUB-IB</div>
         <div class="subib-tiers">
           <div class="tier">
             <div>
@@ -748,7 +833,7 @@
               <div class="tier-commission">[X]%<div class="tier-commission-unit">dari rebate jaringan</div></div>
             </div>
           </div>
-          <div class="tier" style="background:#1A3A10;">
+          <div class="tier" style="background:#0E1C30; border-color:#243558;">
             <div>
               <div class="tier-name">TIER PRESTIGE</div>
               <div class="tier-req">Volume khusus — by negotiation</div>
@@ -758,8 +843,8 @@
             </div>
           </div>
         </div>
-        <div style="margin-top:12px;padding:14px;background:#163810;border:0.5px solid #1A3010;">
-          <p style="font-size:11px;color:#3A5A30;line-height:1.7;">* Persentase komisi bersifat ilustrasi. Detail final dikonfirmasi saat onboarding Sub-IB.</p>
+        <div style="margin-top:12px;padding:14px;background:#080F1A;border:0.5px solid #1A2540;">
+          <p style="font-size:11px;color:#2E4060;line-height:1.7;">* Persentase komisi bersifat ilustrasi. Detail final dikonfirmasi saat onboarding Sub-IB.</p>
         </div>
       </div>
     </div>
@@ -775,7 +860,7 @@
         <div class="reg-icon">
           <svg viewBox="0 0 44 44" fill="none">
             <rect width="44" height="44" fill="#F0EBE0" rx="2"/>
-            <path d="M22 8L34 13.5V21C34 28,28 33,22 34C16 33,10 28,10 21V13.5Z" stroke="#2A5A1E" stroke-width="1.2" fill="none"/>
+            <path d="M22 8L34 13.5V21C34 28,28 33,22 34C16 33,10 28,10 21V13.5Z" stroke="#1E3A5A" stroke-width="1.2" fill="none"/>
             <path d="M16 22L19.5 25.5L28 17" stroke="#F5C200" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
         </div>
@@ -786,8 +871,8 @@
         <div class="reg-icon">
           <svg viewBox="0 0 44 44" fill="none">
             <rect width="44" height="44" fill="#F0EBE0" rx="2"/>
-            <rect x="10" y="16" width="24" height="18" rx="1.5" stroke="#2A5A1E" stroke-width="1.2" fill="none"/>
-            <path d="M16 16V13C16 10.2 18.7 8 22 8C25.3 8 28 10.2 28 13V16" stroke="#2A5A1E" stroke-width="1.2" stroke-linecap="round"/>
+            <rect x="10" y="16" width="24" height="18" rx="1.5" stroke="#1E3A5A" stroke-width="1.2" fill="none"/>
+            <path d="M16 16V13C16 10.2 18.7 8 22 8C25.3 8 28 10.2 28 13V16" stroke="#1E3A5A" stroke-width="1.2" stroke-linecap="round"/>
             <circle cx="22" cy="24" r="2.5" fill="#F5C200"/>
           </svg>
         </div>
@@ -798,7 +883,7 @@
         <div class="reg-icon">
           <svg viewBox="0 0 44 44" fill="none">
             <rect width="44" height="44" fill="#F0EBE0" rx="2"/>
-            <circle cx="22" cy="22" r="10" stroke="#2A5A1E" stroke-width="1.2" fill="none"/>
+            <circle cx="22" cy="22" r="10" stroke="#1E3A5A" stroke-width="1.2" fill="none"/>
             <path d="M22 16V22L26 25" stroke="#F5C200" stroke-width="1.5" stroke-linecap="round"/>
           </svg>
         </div>
@@ -809,7 +894,7 @@
         <div class="reg-icon">
           <svg viewBox="0 0 44 44" fill="none">
             <rect width="44" height="44" fill="#F0EBE0" rx="2"/>
-            <path d="M14 28L18 20L22 24L26 16L30 20" stroke="#2A5A1E" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M14 28L18 20L22 24L26 16L30 20" stroke="#1E3A5A" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
             <circle cx="26" cy="16" r="2" fill="#F5C200"/>
             <line x1="10" y1="32" x2="34" y2="32" stroke="#DDD5C0" stroke-width="0.8"/>
           </svg>
