@@ -352,7 +352,7 @@ export default function App() {
                       { name: 'Exness',          reg: 'CySEC · FCA' },
                       { name: 'Markets4You',     reg: 'FSA' },
                       { name: 'Vantage',         reg: 'ASIC · FCA' },
-                      { name: 'Fusion Markets', reg: 'ASIC' },
+                      { name: 'Fusion Markets',  reg: 'ASIC' },
                       { name: 'B2Prime',         reg: 'MFSA' },
                     ].map((b) => (
                       <div key={b.name} className="flex flex-col items-center justify-center gap-1 py-4 px-1 border-r border-white/5 last:border-r-0 hover:bg-white/5 transition-colors cursor-default group">
