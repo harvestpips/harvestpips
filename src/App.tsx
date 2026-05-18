@@ -68,7 +68,7 @@ export default function App() {
           </div>
 
           <div className="hidden lg:flex items-center gap-8">
-            {['layanan', 'tentang', 'portofolio', 'kontak'].map((item) => (
+            {['layanan', 'tentang', 'portofolio', 'blog', 'kontak'].map((item) => (
               <button 
                 key={item}
                 onClick={() => scrollTo(item)}
@@ -112,7 +112,7 @@ export default function App() {
               <X className="w-8 h-8" />
             </button>
             <div className="flex flex-col gap-6">
-              {['layanan', 'tentang', 'portofolio', 'kontak'].map((item) => (
+              {['layanan', 'tentang', 'portofolio', 'blog', 'kontak'].map((item) => (
                 <button 
                   key={item}
                   onClick={() => scrollTo(item)}
@@ -259,14 +259,14 @@ export default function App() {
                   <ServiceCard 
                     icon={<Sprout className="text-dark" />}
                     title="Agribisnis"
-                    desc="Pendampingan bisnis pertanian & perkebunan — dari hulu ke hilir, dari kebun ke pasar."
+                    desc="Pendampingan bisnis pertanian & perkebunan dari hulu ke hilir. Kami bantu penyusunan business plan, analisis kelayakan usaha, optimasi rantai pasok, hingga strategi akses pasar — untuk petani, koperasi, maupun distributor agro."
                     tags={['Business Plan', 'Supply Chain', 'Akses Pasar', 'Kelayakan Usaha']}
                     colorClass="bg-cream-dark"
                   />
                   <ServiceCard 
                     icon={<Utensils className="text-[#B89A30]" />}
                     title="F&B UMKM"
-                    desc="Strategi tumbuh untuk usaha kuliner — dari dapur rumahan hingga skala distribusi lebih luas."
+                    desc="Strategi pertumbuhan untuk usaha kuliner — dari dapur rumahan hingga skala distribusi yang lebih luas. Kami bantu penyusunan SOP operasional, analisis profitabilitas menu, strategi branding, hingga roadmap ekspansi yang realistis."
                     tags={['Branding', 'SOP Operasional', 'Skalabilitas', 'Analisis Menu']}
                     colorClass="bg-[#FDF8D8]"
                   />
@@ -285,16 +285,16 @@ export default function App() {
                   <ServiceCard 
                     icon={<FileText className="text-mid" />}
                     title="Laporan Keuangan"
-                    desc="Penyusunan laporan keuangan terstandar — Laba Rugi, Neraca, Arus Kas — siap audit."
-                    tags={['Pembukuan', 'Bulanan', 'Audit Ready']}
+                    desc="Penyusunan laporan keuangan terstandar — Laba Rugi, Neraca, dan Arus Kas — sesuai standar akuntansi UMKM Indonesia. Cocok untuk pengajuan kredit bank (KUR), due diligence investor, maupun kebutuhan internal manajemen."
+                    tags={['Pembukuan', 'Bulanan', 'Audit Ready', 'KUR Ready']}
                     colorClass="bg-[#F2F0EA]"
                   />
                   <ServiceCard 
                     icon={<ShieldCheck className="text-gold-dim" />}
                     title="Tax Planning"
                     isTax
-                    desc="Perencanaan pajak yang legal & efisien — minimalisasi beban pajak sesuai regulasi."
-                    tags={['PPh Final UMKM', 'PKP', 'SPT Tahunan']}
+                    desc="Perencanaan pajak yang legal, efisien, dan aman secara regulasi. Kami bantu pengelolaan SPT Masa PPN, PPh 21/23, SPT Tahunan Badan, hingga strategi minimalisasi beban pajak yang sesuai ketentuan DJP — tanpa risiko sanksi."
+                    tags={['PPh Final UMKM', 'PKP', 'SPT Tahunan', 'PPh Badan']}
                     colorClass="bg-[#FDF8E0]"
                   />
                 </div>
@@ -311,7 +311,7 @@ export default function App() {
               
               <div className="bg-dark2 rounded-xl shadow-2xl overflow-hidden border border-white/5">
                 <div className="p-8 lg:p-10 border-b border-white/5 bg-dark/20">
-                  <p className="text-white/80 text-sm leading-relaxed font-light">Program mentoring intensif — dari trader pemula hingga konsisten profit. Kuasai pasar dengan sistem, bukan tebakan.</p>
+                  <p className="text-white/80 text-sm leading-relaxed font-light">Program mentoring intensif 1-on-1 maupun kelompok kecil — dirancang untuk trader yang ingin naik kelas dari pemula menjadi trader yang disiplin dan punya edge di pasar. Berbasis sistem, bukan insting.</p>
                 </div>
                 <div className="grid grid-cols-2 bg-white/5 gap-px">
                   <Indicator title="Analisis Teknikal" sub="Porsi Materi" value={88} />
@@ -379,23 +379,48 @@ export default function App() {
       {/* ABOUT */}
       <section className="bg-dark2" id="tentang">
         <div className="max-w-7xl mx-auto flex flex-col lg:flex-row">
-          <div className="flex-1 p-12 lg:px-12 lg:py-24 xl:px-24 xl:py-24 lg:border-r border-dark">
-            <span className="text-gold text-[9px] tracking-[0.25em] font-bold mb-6 block uppercase">TENTANG KAMI</span>
-            <h2 className="font-serif text-4xl lg:text-5xl text-cream mb-8 leading-tight">Menjembatani<br /><span className="italic text-gold font-normal">Akar & Pasar.</span></h2>
-            <p className="text-faint text-sm lg:text-base leading-relaxed mb-12 font-light">
-              <span className="font-bold tracking-[0.05em] text-cream not-italic">HARVESTPIPS</span> lahir dari keyakinan bahwa bisnis yang kuat dan literasi finansial yang baik harus bisa dimiliki siapa saja. Kami hadir sebagai mitra yang turun langsung, bukan sekadar memberi saran dari jauh.
-            </p>
-            <div className="space-y-6">
-              <AboutValue text="Setiap rekomendasi didukung analisis yang terukur dan relevan." strong="Berbasis data" />
-              <AboutValue text="Kami mendampingi proses, bukan hanya memberikan laporan pasif." strong="Pendampingan nyata" />
-              <AboutValue text="Memahami ekosistem bisnis di Indonesia dari akar." strong="Berakar lokal" />
+          {/* Left: Narrative + Values */}
+          <div className="flex-1 p-12 lg:px-12 lg:py-24 xl:px-24 xl:py-24 lg:border-r border-dark flex flex-col gap-12">
+            <div>
+              <span className="text-gold text-[9px] tracking-[0.25em] font-bold mb-6 block uppercase">TENTANG KAMI</span>
+              <h2 className="font-serif text-4xl lg:text-5xl text-cream mb-8 leading-tight">Menjembatani<br /><span className="italic text-gold font-normal">Akar & Pasar.</span></h2>
+              <p className="text-faint text-sm lg:text-base leading-relaxed mb-10 font-light">
+                <span className="font-bold tracking-[0.05em] text-cream not-italic">HARVESTPIPS</span> lahir dari keyakinan bahwa bisnis yang kuat dan literasi finansial yang baik harus bisa dimiliki siapa saja — mulai dari petani di Lampung hingga trader di kota besar. Kami hadir sebagai mitra yang turun langsung, bukan sekadar memberi saran dari jauh.
+              </p>
+              <div className="space-y-5">
+                <AboutValue text="Setiap rekomendasi didukung analisis yang terukur dan relevan." strong="Berbasis data" />
+                <AboutValue text="Kami mendampingi proses, bukan hanya memberikan laporan pasif." strong="Pendampingan nyata" />
+                <AboutValue text="Memahami ekosistem bisnis di Indonesia dari akar hingga hilir." strong="Berakar lokal" />
+              </div>
+            </div>
+
+            {/* Founder Card */}
+            <div className="border border-white/8 bg-dark/40 p-8 flex flex-col sm:flex-row gap-6 items-start">
+              <div className="w-14 h-14 rounded-full bg-gold/10 border border-gold/20 flex items-center justify-center shrink-0">
+                <span className="font-serif text-xl text-gold font-bold">AN</span>
+              </div>
+              <div className="flex-1">
+                <div className="flex flex-wrap items-center gap-2 mb-1">
+                  <span className="text-cream font-bold text-sm tracking-wide">Ainun Muslimin Najib</span>
+                  <span className="text-[8px] tracking-[0.15em] text-gold border border-gold/20 bg-gold/5 px-2 py-0.5 rounded-sm font-bold">CEO</span>
+                </div>
+                <p className="text-faint/60 text-[10px] tracking-wide mb-3">Founder & Chief Executive Officer</p>
+                <p className="text-faint text-xs leading-relaxed font-light">
+                  Memimpin HARVESTPIPS dengan visi mendemokratisasi akses terhadap pendampingan bisnis dan literasi keuangan berkualitas di Indonesia. Berpengalaman di bidang manajemen usaha, keuangan UMKM, dan pasar finansial.
+                </p>
+              </div>
             </div>
           </div>
+
+          {/* Right: Process Steps */}
           <div className="w-full lg:w-[45%] flex flex-col divide-y divide-dark">
-            <Step num="01" name="DIAGNOSA" desc="Audit menyeluruh kondisi bisnis, potensi, dan gap yang perlu dibenahi." />
-            <Step num="02" name="STRATEGI" desc="Roadmap realistis dan terukur, disesuaikan konteks dan target Anda." />
-            <Step num="03" name="IMPLEMENTASI" desc="Jalankan bersama — kami mendampingi di setiap langkah eksekusi." />
-            <Step num="04" name="SCALE" desc="Review berkala dan dorong pertumbuhan ke level berikutnya." />
+            <div className="p-8 lg:p-10 bg-dark/20">
+              <span className="text-[9px] tracking-[0.2em] text-gold-muted font-bold uppercase">Cara Kerja Kami</span>
+            </div>
+            <Step num="01" name="DIAGNOSA" desc="Audit menyeluruh kondisi bisnis, potensi, dan gap yang perlu dibenahi. Kami mulai dari memahami konteks Anda, bukan asumsi." />
+            <Step num="02" name="STRATEGI" desc="Roadmap realistis dan terukur, disesuaikan dengan kapasitas, target, dan ekosistem bisnis Anda saat ini." />
+            <Step num="03" name="IMPLEMENTASI" desc="Jalankan bersama — kami mendampingi di setiap langkah eksekusi, bukan hanya memberi dokumen lalu pergi." />
+            <Step num="04" name="SCALE" desc="Review berkala, evaluasi capaian, dan dorong pertumbuhan ke level berikutnya secara terstruktur." />
           </div>
         </div>
       </section>
@@ -468,6 +493,73 @@ export default function App() {
               service="Laporan Keuangan"
               initial="SB"
             />
+          </div>
+        </div>
+      </section>
+
+      {/* BLOG */}
+      <section className="py-24 px-6 lg:px-12 bg-cream" id="blog">
+        <div className="max-w-7xl mx-auto">
+          <div className="mb-16 flex flex-col lg:flex-row lg:items-end justify-between gap-6">
+            <div>
+              <span className="text-gold-muted text-[10px] tracking-[0.25em] font-semibold uppercase block mb-3">EDUKASI & WAWASAN</span>
+              <h2 className="font-serif text-4xl lg:text-5xl text-dark">Dari <span className="italic text-gold">Lapangan.</span></h2>
+              <p className="text-muted text-sm mt-4 font-light max-w-md">Insight praktis seputar keuangan UMKM, agribisnis, dan trading — ditulis dari pengalaman lapangan, bukan teori semata.</p>
+            </div>
+            <button className="text-[10px] tracking-widest text-gold border border-gold/30 px-6 py-3 hover:bg-gold hover:text-dark transition-all font-semibold shrink-0 self-start lg:self-auto">
+              SEMUA ARTIKEL →
+            </button>
+          </div>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {[
+              {
+                tag: 'Keuangan UMKM',
+                tagColor: 'bg-blue-50 text-blue-700 border-blue-100',
+                title: 'Kenapa UMKM Wajib Punya Laporan Keuangan Sebelum Ajukan KUR',
+                excerpt: 'Banyak pelaku UMKM ditolak pengajuan KUR bukan karena omzetnya kecil, tapi karena tidak punya laporan keuangan yang rapi. Ini yang perlu Anda siapkan.',
+                date: 'Mei 2025',
+                readTime: '5 menit',
+              },
+              {
+                tag: 'Trading',
+                tagColor: 'bg-emerald-50 text-emerald-700 border-emerald-100',
+                title: '5 Kesalahan Risk Management yang Sering Dilakukan Trader Pemula',
+                excerpt: 'Dari tidak menetapkan stop loss hingga overtrade setelah profit besar — kenali 5 kesalahan manajemen risiko yang paling umum dan cara menghindarinya.',
+                date: 'April 2025',
+                readTime: '7 menit',
+              },
+              {
+                tag: 'Agribisnis',
+                tagColor: 'bg-green-50 text-green-700 border-green-100',
+                title: 'Dari Kebun ke Pasar: Strategi Supply Chain untuk Petani Skala Kecil',
+                excerpt: 'Rantai pasok yang panjang seringkali menggerus margin petani. Pelajari cara memangkas rantai distribusi dan meningkatkan harga jual hasil panen Anda.',
+                date: 'Maret 2025',
+                readTime: '6 menit',
+              },
+            ].map((post, i) => (
+              <article key={i} className="bg-white border border-cream-border hover:border-gold-dim transition-all group flex flex-col cursor-pointer">
+                <div className="h-44 bg-cream-dark flex items-center justify-center border-b border-cream-border group-hover:bg-cream transition-colors">
+                  <span className="font-serif text-5xl text-gold/20 group-hover:text-gold/30 transition-colors">✦</span>
+                </div>
+                <div className="p-7 flex flex-col flex-1">
+                  <div className="mb-4">
+                    <span className={`text-[9px] font-bold tracking-[0.15em] uppercase px-2.5 py-1 border rounded-sm ${post.tagColor}`}>
+                      {post.tag}
+                    </span>
+                  </div>
+                  <h3 className="font-serif text-lg text-dark leading-snug mb-3 group-hover:text-gold transition-colors flex-1">
+                    {post.title}
+                  </h3>
+                  <p className="text-muted text-xs leading-relaxed font-light mb-6">
+                    {post.excerpt}
+                  </p>
+                  <div className="flex items-center justify-between pt-5 border-t border-cream-border">
+                    <span className="text-[10px] text-faint">{post.date}</span>
+                    <span className="text-[10px] text-faint">{post.readTime} baca</span>
+                  </div>
+                </div>
+              </article>
+            ))}
           </div>
         </div>
       </section>
