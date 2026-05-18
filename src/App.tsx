@@ -134,7 +134,7 @@ export default function App() {
 
       {/* HERO */}
       <section className="relative pt-20 overflow-hidden bg-cream-dark">
-        <div className="max-w-7xl mx-auto flex flex-col lg:flex-row min-h-[580px]">
+        <div className="max-w-7xl mx-auto flex flex-col lg:flex-row lg:min-h-[calc(100vh-80px)]">
           <div className="flex-1 p-8 lg:p-12 xl:p-24 flex flex-col justify-center">
             <motion.div 
               initial={{ opacity: 0, y: 20 }}
@@ -195,17 +195,17 @@ export default function App() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 1.2, delay: 0.2 }}
-            className="w-full lg:w-[42%] bg-dark flex flex-col justify-center gap-1 p-8 lg:p-12 border-l border-dark2"
+            className="w-full lg:w-[42%] bg-dark flex flex-col justify-center gap-1 p-6 lg:p-8 border-l border-dark2"
           >
             <div className="grid grid-cols-2 bg-dark2 gap-px">
               {[
                 { n: '80+', l: 'UMKM Dibina' },
-                { n: '88%', l: 'Klien Mencatat Pertumbuhan', highlight: true },
+                { n: '88%', l: 'Klien Lanjut ke Sesi Berikutnya', highlight: true },
                 { n: '3+', l: 'Tahun Pengalaman' },
-                { n: '3x', l: 'ROI Rata-rata Trader' },
+                { n: '150+', l: 'Sesi Mentoring Selesai' },
               ].map((stat, i) => (
-                <div key={i} className={`p-8 group cursor-default transition-colors ${stat.highlight ? 'bg-gold' : 'bg-dark2 hover:bg-dark3'}`}>
-                  <div className={`font-serif text-4xl lg:text-5xl font-bold leading-none mb-2 ${stat.highlight ? 'text-dark' : 'text-gold'}`}>
+                <div key={i} className={`p-5 lg:p-7 group cursor-default transition-colors ${stat.highlight ? 'bg-gold' : 'bg-dark2 hover:bg-dark3'}`}>
+                  <div className={`font-serif text-3xl lg:text-4xl font-bold leading-none mb-1.5 ${stat.highlight ? 'text-dark' : 'text-gold'}`}>
                     {stat.n}
                   </div>
                   <div className={`text-[10px] tracking-wider leading-tight uppercase font-medium ${stat.highlight ? 'text-gold-muted' : 'text-muted'}`}>
@@ -314,18 +314,23 @@ export default function App() {
                   <p className="text-white/80 text-sm leading-relaxed font-light">Program mentoring intensif — dari trader pemula hingga konsisten profit. Kuasai pasar dengan sistem, bukan tebakan.</p>
                 </div>
                 <div className="grid grid-cols-2 bg-white/5 gap-px">
-                  <Indicator title="Analisis Teknikal" sub="Chart & Pattern" value={88} />
-                  <Indicator title="Risk Management" sub="Lot & SL/TP" value={92} />
-                  <Indicator title="Trading Psychology" sub="Profit Mindset" value={80} />
-                  <Indicator title="1-on-1 Mentoring" sub="Personal Session" value={100} />
+                  <Indicator title="Analisis Teknikal" sub="Porsi Materi" value={88} />
+                  <Indicator title="Risk Management" sub="Porsi Materi" value={92} />
+                  <Indicator title="Trading Psychology" sub="Porsi Materi" value={80} />
+                  <Indicator title="1-on-1 Mentoring" sub="Sesi Personal" value={100} />
                 </div>
                 <div className="p-6 bg-dark/40 flex flex-wrap items-center gap-4 border-t border-white/5">
-                  <span className="text-[9px] tracking-[0.2em] text-gold-muted font-bold opacity-60">MARKETS</span>
+                  <span className="text-[9px] tracking-[0.2em] text-gold-muted font-bold opacity-60">PASAR YANG DIPELAJARI</span>
                   {['Forex', 'Saham', 'Indeks', 'Kripto'].map((m) => (
                     <span key={m} className={`text-[10px] px-3 py-1.5 rounded-full border transition-all ${m === 'Forex' ? 'bg-gold text-dark border-gold font-bold' : 'text-faint border-white/10 hover:border-gold hover:text-gold cursor-default'}`}>
                       {m}
                     </span>
                   ))}
+                </div>
+                <div className="px-6 py-4 bg-black/40 border-t border-white/5">
+                  <p className="text-[9px] leading-relaxed text-white/30 font-light">
+                    ⚠️ <span className="font-medium text-white/40">Peringatan Risiko:</span> Trading di pasar finansial mengandung risiko kehilangan modal. Program ini bersifat edukatif dan tidak menjamin hasil atau keuntungan tertentu. Kinerja masa lalu bukan jaminan hasil di masa depan.
+                  </p>
                 </div>
                 <button 
                   onClick={() => scrollTo('kontak')}
@@ -334,14 +339,37 @@ export default function App() {
                   DAFTAR PROGRAM MENTORING
                   <ChevronRight className="w-5 h-5" />
                 </button>
-                <div className="p-8 bg-dark/60 border-t border-white/5 transition-colors hover:bg-dark/80">
-                   <div className="text-[9px] tracking-[0.22em] text-gold-muted font-bold mb-4">PROGRAM IB BROKER</div>
-                   <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
-                     <p className="text-xs text-faint leading-relaxed font-light flex-1"><span className="font-bold tracking-[0.05em] text-gold not-italic">HARVESTPIPS</span> adalah IB resmi dari broker teregulasi. Daftar lewat kami untuk mendapatkan rebate langsung per lot trading.</p>
-                     <button className="text-[10px] tracking-widest text-gold border border-gold/20 px-5 py-2.5 rounded hover:bg-gold hover:text-dark transition-all whitespace-nowrap shrink-0">
-                       LIHAT DETAIL IB →
-                     </button>
-                   </div>
+                <div className="bg-dark/60 border-t border-white/5">
+                  <div className="px-8 pt-6 pb-3 flex items-center justify-between">
+                    <div className="text-[9px] tracking-[0.22em] text-gold-muted font-bold">PROGRAM IB BROKER</div>
+                    <span className="text-[8px] tracking-[0.1em] text-emerald-400/70 border border-emerald-400/20 bg-emerald-400/5 px-2 py-0.5 rounded-sm font-semibold">✓ IB RESMI</span>
+                  </div>
+                  <p className="px-8 pb-5 text-[11px] text-faint/70 leading-relaxed font-light">
+                    Daftar trading lewat <span className="text-gold font-semibold">HARVESTPIPS</span> dan dapatkan <span className="text-white/60">rebate per lot</span> langsung ke akun Anda.
+                  </p>
+                  <div className="grid grid-cols-5 border-t border-white/5">
+                    {[
+                      { name: 'Exness',          reg: 'CySEC · FCA' },
+                      { name: 'Markets4You',     reg: 'FSA' },
+                      { name: 'Vantage',         reg: 'ASIC · FCA' },
+                      { name: 'Fusion
+Markets', reg: 'ASIC' },
+                      { name: 'B2Prime',         reg: 'MFSA' },
+                    ].map((b) => (
+                      <div key={b.name} className="flex flex-col items-center justify-center gap-1 py-4 px-1 border-r border-white/5 last:border-r-0 hover:bg-white/5 transition-colors cursor-default group">
+                        <span className="text-[9px] font-bold text-white/70 group-hover:text-gold transition-colors text-center leading-tight whitespace-pre-line">{b.name}</span>
+                        <span className="text-[7px] text-white/25 tracking-wide text-center leading-tight">{b.reg}</span>
+                      </div>
+                    ))}
+                  </div>
+                  <div className="px-8 py-4 border-t border-white/5">
+                    <button
+                      onClick={() => { const el = document.getElementById('kontak'); if(el) el.scrollIntoView({behavior:'smooth'}); }}
+                      className="w-full text-[10px] tracking-widest text-gold border border-gold/20 py-2.5 rounded hover:bg-gold hover:text-dark transition-all font-semibold"
+                    >
+                      DAFTAR VIA HARVESTPIPS → DAPAT REBATE
+                    </button>
+                  </div>
                 </div>
               </div>
             </div>
@@ -385,43 +413,61 @@ export default function App() {
               quote={<>
                 <span className="font-bold tracking-[0.05em] text-dark not-italic">HARVESTPIPS</span> bantu merapikan pembukuan kami yang berantakan. Sekarang laporan kami sudah siap untuk pengajuan kredit ke bank.
               </>}
-              author="Pak Edi"
-              role="Petani Cabai dan Tomat, Lampung Tengah"
+              author="Pak Edi S."
+              role="Petani Cabai & Tomat"
+              location="Lampung Tengah"
+              service="Laporan Keuangan"
+              initial="ES"
             />
             <TestiCard 
               quote={<>
-                Setelah mentoring 3 bulan, saya akhirnya bisa konsisten profit. Yang paling berubah itu mindset dan disiplin dalam trading.
+                Setelah mentoring 3 bulan, saya akhirnya bisa lebih disiplin dan konsisten dalam eksekusi strategi trading saya. Yang paling berubah itu mindset dan manajemen risiko.
               </>}
-              author="Zefanya Keliat"
-              role="Trader Forex, Alumni Batch 3"
+              author="Zefanya K."
+              role="Trader Forex"
+              location="Alumni Batch 3"
+              service="Mentoring Trader"
+              initial="ZK"
             />
             <TestiCard 
               quote={<>
                 Tax planning dari <span className="font-bold tracking-[0.05em] text-dark not-italic">HARVESTPIPS</span> sangat membantu kami berhemat pajak secara legal. Sangat membantu untuk UMKM seperti kami.
               </>}
-              author="Adi Nugraha"
-              role="Owner PT Evandra Media Anugerah Digital. Subang, Jawa Barat"
+              author="Adi N."
+              role="Owner, PT Evandra Media Anugerah Digital"
+              location="Subang, Jawa Barat"
+              service="Tax Planning"
+              initial="AN"
             />
             <TestiCard 
               quote={<>
-                <span className="font-bold tracking-[0.05em] text-dark not-italic">HARVESTPIPS</span> sangat membantu kami dalam me-manajemen SPT Masa PPN, PPh, dan SPT Tahunan Perusahaan kami. Semuanya rapi dan sesuai regulasi — tenang jadinya.
+                <span className="font-bold tracking-[0.05em] text-dark not-italic">HARVESTPIPS</span> sangat membantu kami dalam pengelolaan SPT Masa PPN, PPh, dan SPT Tahunan Perusahaan. Semuanya rapi dan sesuai regulasi — tenang jadinya.
               </>}
-              author="Agus Santoso"
-              role="Owner PT AGS Anugerah Gemilang Sejati. Jombang, Jawa Timur"
+              author="Agus S."
+              role="Owner, PT AGS Anugerah Gemilang Sejati"
+              location="Jombang, Jawa Timur"
+              service="Tax Planning"
+              initial="AS"
             />
             <TestiCard 
               quote={<>
-                Kami sempat kewalahan mengurus administrasi keuangan sambil fokus jualan. Sejak dibantu <span className="font-bold tracking-[0.05em] text-dark not-italic">HARVESTPIPS</span>, pembukuan jadi rapi dan kami bisa lebih fokus mengembangkan bisnis parfum kami.
+                Kami sempat kewalahan mengurus administrasi keuangan sambil fokus jualan. Sejak dibantu <span className="font-bold tracking-[0.05em] text-dark not-italic">HARVESTPIPS</span>, pembukuan jadi rapi dan kami bisa lebih fokus mengembangkan bisnis.
               </>}
-              author="Ismail Mardianto"
-              role="Owner Xperfumery Parfum. Surabaya, Jawa Timur"
+              author="Ismail M."
+              role="Owner, Xperfumery Parfum"
+              location="Surabaya, Jawa Timur"
+              service="Laporan Keuangan"
+              initial="IM"
             />
             <TestiCard 
               quote={<>
-                <span className="font-bold tracking-[0.05em] text-dark not-italic">HARVESTPIPS</span> membantu kami mengelola laporan keuangan dan perpajakan perusahaan dengan sangat profesional. Prosesnya cepat, transparan, dan hasilnya bisa kami pertanggungjawabkan ke semua pihak.
+                <span className="font-bold tracking-[0.05em] text-dark not-italic">HARVESTPIPS</span> membantu kami mengelola laporan keuangan dan perpajakan dengan sangat profesional. Prosesnya cepat, transparan, dan hasilnya bisa kami pertanggungjawabkan ke semua pihak.
               </>}
-              author="Samsul Bahri"
-              role="Direktur CV Almas Karunia Semesta. Bengkulu Utara, Bengkulu"
+              author="Samsul B."
+              role="Direktur, CV Almas Karunia Semesta"
+              location="Bengkulu Utara, Bengkulu"
+              service="Laporan Keuangan"
+              initial="SB"
             />
           </div>
         </div>
@@ -455,19 +501,7 @@ export default function App() {
         </div>
       </section>
 
-      {/* Floating WhatsApp Button */}
-      <motion.a
-        href="https://wa.me/6285183153125?text=Halo%20HARVESTPIPS%2C%20saya%20tertarik%20untuk%20konsultasi."
-        target="_blank"
-        rel="noopener noreferrer"
-        initial={{ scale: 0, opacity: 0 }}
-        animate={{ scale: 1, opacity: 1 }}
-        whileHover={{ scale: 1.1 }}
-        whileTap={{ scale: 0.9 }}
-        className="fixed bottom-6 right-6 z-[100] bg-[#25D366] text-white p-3.5 rounded-full shadow-2xl flex items-center justify-center hover:bg-[#128C7E] transition-colors border-4 border-white"
-      >
-        <Phone className="w-5 h-5 fill-current" />
-      </motion.a>
+      {/* Floating WhatsApp Button removed */}
 
       {/* FOOTER */}
       <footer className="bg-cream-dark pt-24 pb-12 px-8 lg:px-16 text-mid border-t border-cream-border">
@@ -586,16 +620,42 @@ function AboutValue({ text, strong }: any) {
   );
 }
 
-function TestiCard({ quote, author, role }: any) {
+const SERVICE_COLORS: Record<string, string> = {
+  'Laporan Keuangan': 'bg-blue-50 text-blue-700 border-blue-100',
+  'Tax Planning': 'bg-amber-50 text-amber-700 border-amber-100',
+  'Mentoring Trader': 'bg-emerald-50 text-emerald-700 border-emerald-100',
+  'Agribisnis': 'bg-green-50 text-green-700 border-green-100',
+  'F&B UMKM': 'bg-orange-50 text-orange-700 border-orange-100',
+};
+
+function TestiCard({ quote, author, role, location, service, initial }: any) {
+  const tagClass = SERVICE_COLORS[service] || 'bg-cream-dark text-mid border-cream-border';
   return (
-    <div className="bg-white border border-cream-border p-10 hover:border-gold-dim transition-all group">
-      <div className="font-serif text-5xl text-gold/30 mb-4 transition-colors group-hover:text-gold leading-none">"</div>
-      <p className="text-mid text-sm font-light italic leading-relaxed mb-8">
+    <div className="bg-white border border-cream-border p-8 hover:border-gold-dim transition-all group flex flex-col">
+      {/* Service tag */}
+      <div className="mb-5">
+        <span className={`text-[9px] font-bold tracking-[0.15em] uppercase px-2.5 py-1 border rounded-sm ${tagClass}`}>
+          {service}
+        </span>
+      </div>
+      {/* Quote */}
+      <div className="font-serif text-4xl text-gold/30 mb-3 transition-colors group-hover:text-gold leading-none">"</div>
+      <p className="text-mid text-sm font-light italic leading-relaxed mb-8 flex-1">
         {quote}
       </p>
-      <div>
-        <div className="text-dark font-bold text-xs mb-1">{author}</div>
-        <div className="text-faint text-[10px] tracking-wide">{role}</div>
+      {/* Author row */}
+      <div className="flex items-center gap-3 pt-5 border-t border-cream-border">
+        <div className="w-9 h-9 rounded-full bg-cream-dark border border-cream-border flex items-center justify-center shrink-0">
+          <span className="text-[10px] font-bold text-gold tracking-wide">{initial}</span>
+        </div>
+        <div className="min-w-0">
+          <div className="text-dark font-bold text-xs mb-0.5 flex items-center gap-1.5">
+            {author}
+            <span className="text-[8px] text-emerald-600 font-semibold tracking-wide border border-emerald-200 bg-emerald-50 px-1.5 py-0.5 rounded-sm">✓ KLIEN</span>
+          </div>
+          <div className="text-faint text-[10px] leading-tight">{role}</div>
+          <div className="text-faint/60 text-[9px] tracking-wide mt-0.5">{location}</div>
+        </div>
       </div>
     </div>
   );
