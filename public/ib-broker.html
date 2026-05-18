@@ -1,0 +1,922 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Program IB Broker — PT Harvest Pips Management</title>
+  <meta name="description" content="Daftar trading melalui Harvest Pips Management sebagai Introducing Broker resmi. Dapatkan rebate, spread kompetitif, dan dukungan penuh dari tim profesional." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,600&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--cream);
+      color: #1A1A1A;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { text-decoration: none; color: inherit; }
+    button { cursor: pointer; font-family: inherit; border: none; }
+
+    :root {
+      --gold: #F5C200;
+      --gold-dim: #C9A000;
+      --gold-muted: #7A6200;
+      --gold-pale: #FDF8E6;
+      --cream: #F8F4ED;
+      --cream-dark: #F2EDE2;
+      --cream-border: #DDD5C0;
+      --green-dark: #1E4A14;
+      --green-darker: #163810;
+      --green-txt: #6AAA50;
+      --dark: #111821;
+      --dark2: #1E293B;
+      --dark3: #334155;
+      --mid: #475569;
+      --muted: #64748B;
+      --faint: #94A3B8;
+      --radius: 3px;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(22px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes barGrow { from { width: 0; } }
+    .au { animation: fadeUp 0.7s ease both; }
+    .d1 { animation-delay: 0.1s; }
+    .d2 { animation-delay: 0.22s; }
+    .d3 { animation-delay: 0.34s; }
+    .d4 { animation-delay: 0.46s; }
+
+    /* NAV */
+    .nav {
+      position: sticky; top: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 16px 48px;
+      background: rgba(248,244,237,0.96); backdrop-filter: blur(10px);
+      border-bottom: 0.5px solid var(--cream-border);
+    }
+    .logo { display: flex; align-items: center; gap: 11px; }
+    .logo-mark {
+      width: 40px; height: 40px;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .logo-name { font-size: 14px; font-weight: 500; letter-spacing: 0.07em; color: var(--dark); }
+    .logo-sub  { font-size: 9px; letter-spacing: 0.22em; color: var(--muted); display: block; margin-top: 1px; }
+    .nav-back {
+      font-size: 12px; color: var(--mid); letter-spacing: 0.04em;
+      display: flex; align-items: center; gap: 6px;
+      transition: color 0.2s;
+    }
+    .nav-back:hover { color: var(--dark); }
+    .btn-nav {
+      background: var(--gold); color: var(--dark);
+      font-size: 12px; font-weight: 500; letter-spacing: 0.08em;
+      padding: 10px 22px; border-radius: var(--radius);
+      transition: background 0.2s;
+    }
+    .btn-nav:hover { background: var(--gold-dim); }
+
+    /* HERO IB */
+    .ib-hero {
+      background: var(--dark);
+      padding: 80px 48px;
+      display: grid; grid-template-columns: 1.1fr 0.9fr;
+      gap: 48px; align-items: center;
+      min-height: 420px;
+    }
+    .ib-hero-eyebrow { font-size: 10px; letter-spacing: 0.22em; color: var(--gold-muted); margin-bottom: 18px; }
+    .ib-hero-h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 52px; font-weight: 500; color: #EEE8D8;
+      line-height: 1.1; margin-bottom: 10px;
+    }
+    .ib-hero-h1 em { font-style: italic; color: var(--gold); }
+    .ib-hero-tagline {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 18px; font-style: italic; color: #94A3B8;
+      margin-bottom: 22px;
+    }
+    .ib-hero-desc { font-size: 14px; color: #94A3B8; line-height: 1.85; font-weight: 300; margin-bottom: 36px; max-width: 460px; }
+    .ib-hero-btns { display: flex; gap: 12px; flex-wrap: wrap; }
+    .btn-gold {
+      background: var(--gold); color: var(--dark);
+      font-size: 12px; font-weight: 500; letter-spacing: 0.08em;
+      padding: 13px 30px; border-radius: var(--radius);
+      transition: background 0.2s, transform 0.15s;
+    }
+    .btn-gold:hover { background: var(--gold-dim); transform: translateY(-1px); }
+    .btn-ghost-dark {
+      background: transparent; color: #94A3B8;
+      font-size: 12px; letter-spacing: 0.06em;
+      padding: 13px 28px; border: 1px solid #2D4060;
+      border-radius: var(--radius); transition: border-color 0.2s, color 0.2s;
+    }
+    .btn-ghost-dark:hover { border-color: #64748B; color: #ccc; }
+
+    /* IB hero right — what is IB */
+    .ib-what {
+      background: #0D1520; border: 0.5px solid #1E293B;
+      padding: 32px 28px;
+    }
+    .ib-what-label { font-size: 9px; letter-spacing: 0.2em; color: var(--gold-muted); margin-bottom: 14px; }
+    .ib-what-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 22px; font-weight: 500; color: #E2D5B0;
+      margin-bottom: 14px; line-height: 1.3;
+    }
+    .ib-what-desc { font-size: 12px; color: #7B91AC; line-height: 1.8; font-weight: 300; margin-bottom: 20px; }
+    .ib-flow { display: flex; flex-direction: column; gap: 1px; }
+    .ib-flow-step {
+      display: flex; align-items: flex-start; gap: 14px;
+      background: #162033; padding: 12px 14px;
+      border: 0.5px solid #1E293B;
+    }
+    .ib-flow-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 22px; font-weight: 600; color: #1E293B;
+      line-height: 1; flex-shrink: 0; width: 22px;
+    }
+    .ib-flow-txt { font-size: 12px; color: #7B91AC; line-height: 1.6; padding-top: 2px; }
+    .ib-flow-txt strong { color: #94A3B8; font-weight: 500; }
+
+    /* STRIP */
+    .strip {
+      background: var(--gold); padding: 13px 48px;
+      display: flex; align-items: center; justify-content: center;
+      gap: 24px; flex-wrap: wrap;
+    }
+    .s-item { font-size: 11px; font-weight: 500; letter-spacing: 0.1em; color: var(--dark); }
+    .s-dot  { width: 4px; height: 4px; background: var(--dark); border-radius: 50%; opacity: 0.3; flex-shrink: 0; }
+
+    /* SECTION COMMON */
+    .sec { padding: 80px 48px; }
+    .sec-cream { background: var(--cream); }
+    .sec-dark  { background: #0A1019; }
+    .sec-green { background: var(--green-dark); }
+    .sec-eyebrow { font-size: 10px; letter-spacing: 0.22em; color: var(--gold-muted); margin-bottom: 10px; }
+    .sec-eyebrow-light { font-size: 10px; letter-spacing: 0.22em; color: #6AAA50; opacity: 0.7; margin-bottom: 10px; }
+    .sec-h {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 36px; font-weight: 400; color: var(--dark);
+      line-height: 1.2; margin-bottom: 6px;
+    }
+    .sec-h em { font-style: italic; color: var(--green-dark); }
+    .sec-h-light {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 36px; font-weight: 400; color: #EEE8D8;
+      line-height: 1.2; margin-bottom: 6px;
+    }
+    .sec-h-light em { font-style: italic; color: var(--gold); }
+    .sec-sub { font-size: 13px; color: var(--muted); font-weight: 300; margin-bottom: 48px; }
+    .sec-sub-light { font-size: 13px; color: #64748B; font-weight: 300; margin-bottom: 48px; }
+
+    /* BROKER CARDS */
+    .broker-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 24px; }
+    .broker-card {
+      background: #fff; border: 0.5px solid var(--cream-border);
+      overflow: hidden; transition: box-shadow 0.2s, border-color 0.2s;
+    }
+    .broker-card:hover { box-shadow: 0 6px 24px rgba(0,0,0,0.08); border-color: var(--gold-dim); }
+    .broker-card-header {
+      background: var(--dark); padding: 24px 28px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .broker-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 24px; font-weight: 600; color: var(--gold);
+    }
+    .broker-reg {
+      font-size: 10px; letter-spacing: 0.12em;
+      color: #64748B; background: #162033;
+      border: 0.5px solid #243348; padding: 5px 10px;
+    }
+    .broker-card-body { padding: 24px 28px; }
+    .broker-tagline { font-size: 13px; color: var(--mid); font-weight: 300; margin-bottom: 20px; line-height: 1.7; }
+    .broker-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--cream-border); margin-bottom: 20px; }
+    .b-stat { background: var(--cream); padding: 14px 12px; text-align: center; }
+    .b-stat-n { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 600; color: var(--dark); line-height: 1; margin-bottom: 3px; }
+    .b-stat-l { font-size: 10px; color: var(--mid); letter-spacing: 0.05em; line-height: 1.4; }
+    .broker-benefits { display: flex; flex-direction: column; gap: 8px; margin-bottom: 22px; }
+    .b-benefit { display: flex; align-items: flex-start; gap: 10px; }
+    .b-check {
+      width: 16px; height: 16px; background: var(--gold); border-radius: 50%;
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 1px;
+    }
+    .b-check svg { width: 9px; height: 9px; }
+    .b-benefit-txt { font-size: 12px; color: #334155; line-height: 1.6; }
+    .broker-cta {
+      background: var(--gold); color: var(--dark);
+      font-size: 12px; font-weight: 500; letter-spacing: 0.08em;
+      padding: 13px 24px; width: 100%; text-align: center;
+      border-radius: var(--radius); transition: background 0.2s;
+      display: block;
+    }
+    .broker-cta:hover { background: var(--gold-dim); }
+
+    /* REBATE SECTION */
+    .rebate-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; align-items: start; }
+    .rebate-explain { }
+    .rebate-explain-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 28px; font-weight: 400; color: #EEE8D8;
+      margin-bottom: 14px; line-height: 1.3;
+    }
+    .rebate-explain-title em { font-style: italic; color: var(--gold); }
+    .rebate-explain-desc { font-size: 13px; color: #7B91AC; line-height: 1.85; font-weight: 300; margin-bottom: 24px; }
+    .rebate-how { display: flex; flex-direction: column; gap: 1px; }
+    .r-step { background: #0D1520; border: 0.5px solid #1E293B; padding: 16px 18px; display: flex; gap: 16px; align-items: flex-start; }
+    .r-step-n {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 28px; font-weight: 600; color: #1A2535;
+      line-height: 1; flex-shrink: 0; width: 28px;
+    }
+    .r-step-title { font-size: 12px; font-weight: 500; color: #94A3B8; margin-bottom: 3px; letter-spacing: 0.06em; }
+    .r-step-desc  { font-size: 11px; color: #7B91AC; line-height: 1.65; }
+
+    .rebate-card { background: #0D1520; border: 0.5px solid #1E293B; padding: 28px; }
+    .rebate-card-title { font-size: 10px; letter-spacing: 0.2em; color: var(--gold-muted); margin-bottom: 20px; }
+    .rebate-row {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 14px 0; border-bottom: 0.5px solid #1E1E1E;
+    }
+    .rebate-row:last-child { border-bottom: none; padding-bottom: 0; }
+    .rebate-row-label { font-size: 12px; color: #7B91AC; }
+    .rebate-row-label strong { display: block; font-size: 13px; color: #94A3B8; font-weight: 500; margin-bottom: 2px; }
+    .rebate-row-val { font-family: 'Cormorant Garamond', serif; font-size: 26px; font-weight: 600; color: var(--gold); }
+    .rebate-row-unit { font-size: 10px; color: #444; font-family: 'DM Sans', sans-serif; display: block; text-align: right; margin-top: 2px; }
+    .rebate-bar { height: 2px; background: #1E1E1E; margin-top: 8px; border-radius: 1px; overflow: hidden; }
+    .rebate-fill { height: 100%; background: var(--gold); border-radius: 1px; animation: barGrow 1.2s ease both; animation-delay: 0.4s; }
+    .rebate-note { margin-top: 20px; padding: 14px; background: #0D1A2E; border: 0.5px solid #1E2A3B; }
+    .rebate-note p { font-size: 11px; color: #B8A050; line-height: 1.7; }
+
+    /* SUB IB */
+    .subib-section { background: var(--green-dark); padding: 80px 48px; }
+    .subib-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
+    .subib-l .sec-eyebrow-light { margin-bottom: 10px; }
+    .subib-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 36px; font-weight: 400; color: #D8E8D0;
+      line-height: 1.25; margin-bottom: 18px;
+    }
+    .subib-title em { font-style: italic; color: var(--gold); }
+    .subib-desc { font-size: 13px; color: var(--green-txt); line-height: 1.88; font-weight: 300; opacity: 0.85; margin-bottom: 28px; }
+    .subib-perks { display: flex; flex-direction: column; gap: 12px; margin-bottom: 32px; }
+    .subib-perk { display: flex; gap: 12px; align-items: flex-start; }
+    .subib-dash { width: 18px; height: 1px; background: var(--gold); margin-top: 9px; flex-shrink: 0; }
+    .subib-perk-txt { font-size: 13px; color: var(--green-txt); opacity: 0.8; line-height: 1.65; }
+    .subib-perk-txt strong { color: var(--gold); font-weight: 500; opacity: 1; }
+    .btn-subib {
+      background: var(--gold); color: var(--dark);
+      font-size: 12px; font-weight: 500; letter-spacing: 0.08em;
+      padding: 14px 32px; border-radius: var(--radius);
+      transition: background 0.2s, transform 0.15s;
+      display: inline-block;
+    }
+    .btn-subib:hover { background: var(--gold-dim); transform: translateY(-1px); }
+
+    .subib-tiers { display: flex; flex-direction: column; gap: 1px; }
+    .tier {
+      background: var(--green-darker); border: 0.5px solid #1A3010;
+      padding: 20px 24px; display: flex; align-items: center; justify-content: space-between;
+      transition: background 0.2s;
+    }
+    .tier:hover { background: #1A3A10; }
+    .tier.featured { background: var(--gold); }
+    .tier-name { font-size: 13px; font-weight: 500; color: #6AAA50; letter-spacing: 0.06em; }
+    .tier.featured .tier-name { color: var(--dark); }
+    .tier-req { font-size: 11px; color: #3A5A30; margin-top: 3px; }
+    .tier.featured .tier-req { color: var(--gold-muted); }
+    .tier-commission {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 26px; font-weight: 600; color: var(--gold); line-height: 1;
+    }
+    .tier.featured .tier-commission { color: var(--dark); }
+    .tier-commission-unit { font-size: 10px; color: #3A5A30; font-family: 'DM Sans', sans-serif; text-align: right; margin-top: 2px; }
+    .tier.featured .tier-commission-unit { color: var(--gold-muted); }
+    .tier-badge {
+      font-size: 9px; letter-spacing: 0.14em; background: var(--dark);
+      color: var(--gold); padding: 3px 8px; margin-top: 4px; display: inline-block;
+    }
+
+    /* REGULATION */
+    .reg-section { padding: 72px 48px; background: var(--cream-dark); }
+    .reg-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+    .reg-card {
+      background: #fff; border: 0.5px solid var(--cream-border);
+      padding: 24px 20px; text-align: center;
+      transition: border-color 0.2s;
+    }
+    .reg-card:hover { border-color: var(--gold-dim); }
+    .reg-icon { width: 44px; height: 44px; margin: 0 auto 14px; }
+    .reg-title { font-size: 13px; font-weight: 500; color: var(--dark); margin-bottom: 6px; }
+    .reg-desc  { font-size: 11px; color: var(--muted); line-height: 1.65; font-weight: 300; }
+
+    /* FAQ */
+    .faq-section { padding: 72px 48px; background: var(--cream); }
+    .faq-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; max-width: 900px; }
+    .faq-item { background: #fff; border: 0.5px solid var(--cream-border); padding: 22px 24px; }
+    .faq-q { font-size: 13px; font-weight: 500; color: var(--dark); margin-bottom: 8px; }
+    .faq-a { font-size: 12px; color: var(--muted); line-height: 1.75; font-weight: 300; }
+
+    /* CTA */
+    .cta {
+      background: var(--gold); padding: 72px 48px;
+      display: grid; grid-template-columns: 1fr auto;
+      align-items: center; gap: 48px;
+    }
+    .cta-h {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 40px; font-weight: 400; color: var(--dark); line-height: 1.2;
+    }
+    .cta-h em { font-style: italic; }
+    .cta-sub { font-size: 13px; color: var(--gold-muted); margin-top: 10px; font-weight: 300; }
+    .cta-btns { display: flex; gap: 12px; flex-shrink: 0; flex-wrap: wrap; }
+    .cta-btn1 {
+      background: var(--dark); color: var(--gold);
+      font-size: 12px; font-weight: 500; letter-spacing: 0.08em;
+      padding: 14px 34px; transition: opacity 0.2s;
+    }
+    .cta-btn1:hover { opacity: 0.85; }
+    .cta-btn2 {
+      background: transparent; color: var(--dark);
+      font-size: 12px; letter-spacing: 0.08em;
+      padding: 14px 28px; border: 1.5px solid var(--dark);
+      transition: background 0.2s, color 0.2s;
+    }
+    .cta-btn2:hover { background: var(--dark); color: var(--gold); }
+
+    /* FOOTER */
+    .footer { background: #090F18; padding: 48px 48px 22px; }
+    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; margin-bottom: 40px; }
+    .ft-brand { font-family: 'Cormorant Garamond', serif; font-size: 18px; font-weight: 600; color: var(--gold); letter-spacing: 0.04em; margin-bottom: 10px; }
+    .ft-tagline { font-size: 12px; color: #334155; line-height: 1.8; font-weight: 300; }
+    .ft-col-h { font-size: 9px; letter-spacing: 0.22em; color: #2D4A6A; margin-bottom: 14px; }
+    .ft-link { display: block; font-size: 12px; color: #3D5A75; margin-bottom: 9px; transition: color 0.2s; }
+    .ft-link:hover { color: var(--gold); }
+    .footer-bot { border-top: 0.5px solid #0D1520; padding-top: 20px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; }
+    .ft-copy { font-size: 11px; color: #2D4060; }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      .nav { padding: 16px 24px; }
+      .ib-hero { grid-template-columns: 1fr; padding: 48px 24px; }
+      .ib-hero-h1 { font-size: 38px; }
+      .strip { padding: 12px 24px; gap: 14px; }
+      .s-dot { display: none; }
+      .sec { padding: 56px 24px; }
+      .broker-grid { grid-template-columns: 1fr; }
+      .rebate-layout { grid-template-columns: 1fr; }
+      .subib-section { padding: 56px 24px; }
+      .subib-layout { grid-template-columns: 1fr; }
+      .reg-section { padding: 56px 24px; }
+      .reg-grid { grid-template-columns: 1fr 1fr; }
+      .faq-section { padding: 56px 24px; }
+      .faq-grid { grid-template-columns: 1fr; }
+      .cta { grid-template-columns: 1fr; gap: 28px; padding: 52px 24px; }
+      .cta-h { font-size: 30px; }
+      .footer { padding: 44px 24px 20px; }
+      .footer-grid { grid-template-columns: 1fr 1fr; gap: 28px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav">
+    <div class="logo">
+      <div class="logo-mark">
+        <img src="./logo.png" alt="HARVESTPIPS Logo" style="width:40px;height:40px;object-fit:contain;display:block;" />
+      </div>
+      <div>
+        <div class="logo-name">HARVESTPIPS</div>
+        <span class="logo-sub">MANAGEMENT</span>
+      </div>
+    </div>
+    <a href="/" class="nav-back">← Kembali ke Halaman Utama</a>
+    <button class="btn-nav" onclick="document.getElementById('daftar').scrollIntoView({behavior:'smooth'})">DAFTAR SEKARANG</button>
+  </nav>
+
+  <!-- HERO -->
+  <section class="ib-hero">
+    <div>
+      <div class="ib-hero-eyebrow au">PROGRAM IB BROKER · PT HARVEST PIPS MANAGEMENT</div>
+      <h1 class="ib-hero-h1 au d1">Trading Lebih Cerdas<br>Bersama <em>IB Terpercaya.</em></h1>
+      <div class="ib-hero-tagline au d2">Rebate nyata. Broker teregulasi. Dukungan penuh.</div>
+      <p class="ib-hero-desc au d3">Daftar akun trading Anda melalui Harvest Pips sebagai Introducing Broker resmi. Nikmati keuntungan eksklusif — dari spread lebih kompetitif, rebate per lot, hingga dukungan analisa dan mentoring langsung dari tim kami.</p>
+      <div class="ib-hero-btns au d4">
+        <button class="btn-gold" onclick="document.getElementById('broker').scrollIntoView({behavior:'smooth'})">LIHAT BROKER PARTNER</button>
+        <button class="btn-ghost-dark" onclick="document.getElementById('subib').scrollIntoView({behavior:'smooth'})">Jadi Sub-IB →</button>
+      </div>
+    </div>
+    <div class="ib-what au d2">
+      <div class="ib-what-label">APA ITU INTRODUCING BROKER?</div>
+      <div class="ib-what-title">Harvest Pips sebagai jembatan antara Anda dan broker global</div>
+      <div class="ib-what-desc">Sebagai IB resmi, kami membantu Anda membuka akun di broker terpercaya sekaligus memberikan nilai tambah yang tidak Anda dapatkan jika daftar sendiri.</div>
+      <div class="ib-flow">
+        <div class="ib-flow-step">
+          <div class="ib-flow-num">1</div>
+          <div class="ib-flow-txt"><strong>Daftar melalui link IB kami</strong> — proses sama seperti daftar biasa, tidak ada biaya tambahan.</div>
+        </div>
+        <div class="ib-flow-step">
+          <div class="ib-flow-num">2</div>
+          <div class="ib-flow-txt"><strong>Mulai trading</strong> — setiap lot yang Anda tradingkan menghasilkan rebate yang dikreditkan ke akun Anda.</div>
+        </div>
+        <div class="ib-flow-step">
+          <div class="ib-flow-num">3</div>
+          <div class="ib-flow-txt"><strong>Dapatkan dukungan penuh</strong> — analisa, sinyal, dan akses ke komunitas trader Harvest Pips.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STRIP -->
+  <div class="strip">
+    <div class="s-item">Rebate per Lot</div><div class="s-dot"></div>
+    <div class="s-item">Spread Kompetitif</div><div class="s-dot"></div>
+    <div class="s-item">Broker Teregulasi</div><div class="s-dot"></div>
+    <div class="s-item">Dukungan Penuh</div><div class="s-dot"></div>
+    <div class="s-item">Program Sub-IB</div>
+  </div>
+
+  <!-- BROKER PARTNERS -->
+  <section class="sec sec-cream" id="broker">
+    <div class="sec-eyebrow">BROKER PARTNER KAMI</div>
+    <h2 class="sec-h">Pilih Broker yang <em>Tepat untuk Anda</em></h2>
+    <div class="sec-sub">Kami bermitra dengan broker global teregulasi — masing-masing dengan keunggulan berbeda.</div>
+    <div class="broker-grid">
+      <div class="broker-card">
+        <div class="broker-card-header">
+          <div class="broker-name">Exness</div>
+          <div class="broker-reg">REG: CySEC · FCA · FSCA</div>
+        </div>
+        <div class="broker-card-body">
+          <p class="broker-tagline">Pilihan utama trader forex Indonesia — spread ultra-rendah, leverage fleksibel, dan deposit/withdraw via bank lokal tanpa biaya.</p>
+          <div class="broker-stats"><div class="b-stat"><div class="b-stat-n">0.0</div><div class="b-stat-l">Spread mulai (pip)</div></div><div class="b-stat"><div class="b-stat-n">1:Unlimited</div><div class="b-stat-l">Leverage (Pro)</div></div><div class="b-stat"><div class="b-stat-n">$10</div><div class="b-stat-l">Deposit minimum</div></div></div>
+          <div class="broker-benefits">
+            <div class="b-benefit">
+              <div class="b-check"><svg viewBox="0 0 9 9" fill="none"><path d="M1.5 4.5L3.5 6.5L7.5 2.5" stroke="#1A1A1A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              <div class="b-benefit-txt">Rebate dikreditkan otomatis ke akun trading setiap hari</div>
+            </div>
+            <div class="b-benefit">
+              <div class="b-check"><svg viewBox="0 0 9 9" fill="none"><path d="M1.5 4.5L3.5 6.5L7.5 2.5" stroke="#1A1A1A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              <div class="b-benefit-txt">Deposit & withdraw via <strong>bank lokal Indonesia</strong> tanpa biaya</div>
+            </div>
+            <div class="b-benefit">
+              <div class="b-check"><svg viewBox="0 0 9 9" fill="none"><path d="M1.5 4.5L3.5 6.5L7.5 2.5" stroke="#1A1A1A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              <div class="b-benefit-txt">Platform <strong>MT4, MT5 & Exness App</strong></div>
+            </div>
+            <div class="b-benefit">
+              <div class="b-check"><svg viewBox="0 0 9 9" fill="none"><path d="M1.5 4.5L3.5 6.5L7.5 2.5" stroke="#1A1A1A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              <div class="b-benefit-txt">Proteksi saldo negatif & eksekusi instan</div>
+            </div>
+          </div>
+          <a href="https://wa.me/6285183153125?text=Halo%20Harvest%20Pips%2C%20saya%20ingin%20daftar%20IB%20Exness" target="_blank" class="broker-cta">DAFTAR LEWAT HARVESTPIPS →</a>
+        </div>
+      </div>
+      <div class="broker-card">
+        <div class="broker-card-header">
+          <div class="broker-name">Markets4You</div>
+          <div class="broker-reg">REG: FSA Seychelles</div>
+        </div>
+        <div class="broker-card-body">
+          <p class="broker-tagline">Broker global dengan produk beragam — cocok untuk trader yang ingin eksplorasi pasar Forex, Saham, hingga Komoditas dalam satu platform.</p>
+          <div class="broker-stats"><div class="b-stat"><div class="b-stat-n">0.0</div><div class="b-stat-l">Spread mulai (pip)</div></div><div class="b-stat"><div class="b-stat-n">1:1000</div><div class="b-stat-l">Leverage maks</div></div><div class="b-stat"><div class="b-stat-n">$1</div><div class="b-stat-l">Deposit minimum</div></div></div>
+          <div class="broker-benefits">
+            <div class="b-benefit">
+              <div class="b-check"><svg viewBox="0 0 9 9" fill="none"><path d="M1.5 4.5L3.5 6.5L7.5 2.5" stroke="#1A1A1A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              <div class="b-benefit-txt">Rebate per lot untuk semua instrumen trading</div>
+            </div>
+            <div class="b-benefit">
+              <div class="b-check"><svg viewBox="0 0 9 9" fill="none"><path d="M1.5 4.5L3.5 6.5L7.5 2.5" stroke="#1A1A1A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              <div class="b-benefit-txt">Akses <strong>MT4 & MT5</strong> dengan berbagai jenis akun</div>
+            </div>
+            <div class="b-benefit">
+              <div class="b-check"><svg viewBox="0 0 9 9" fill="none"><path d="M1.5 4.5L3.5 6.5L7.5 2.5" stroke="#1A1A1A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              <div class="b-benefit-txt">Copy trading & EA-friendly</div>
+            </div>
+            <div class="b-benefit">
+              <div class="b-check"><svg viewBox="0 0 9 9" fill="none"><path d="M1.5 4.5L3.5 6.5L7.5 2.5" stroke="#1A1A1A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              <div class="b-benefit-txt">Support multi-aset: Forex, Komoditas, Saham, Kripto</div>
+            </div>
+          </div>
+          <a href="https://wa.me/6285183153125?text=Halo%20Harvest%20Pips%2C%20saya%20ingin%20daftar%20IB%20Markets4You" target="_blank" class="broker-cta">DAFTAR LEWAT HARVESTPIPS →</a>
+        </div>
+      </div>
+      <div class="broker-card">
+        <div class="broker-card-header">
+          <div class="broker-name">Vantage</div>
+          <div class="broker-reg">REG: ASIC · FCA · CIMA</div>
+        </div>
+        <div class="broker-card-body">
+          <p class="broker-tagline">ECN broker teregulasi ketat — ideal untuk trader yang mengutamakan eksekusi bersih, spread kompetitif, dan regulasi berlapis.</p>
+          <div class="broker-stats"><div class="b-stat"><div class="b-stat-n">0.0</div><div class="b-stat-l">Spread ECN (pip)</div></div><div class="b-stat"><div class="b-stat-n">1:500</div><div class="b-stat-l">Leverage maks</div></div><div class="b-stat"><div class="b-stat-n">$50</div><div class="b-stat-l">Deposit minimum</div></div></div>
+          <div class="broker-benefits">
+            <div class="b-benefit">
+              <div class="b-check"><svg viewBox="0 0 9 9" fill="none"><path d="M1.5 4.5L3.5 6.5L7.5 2.5" stroke="#1A1A1A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              <div class="b-benefit-txt">Rebate per lot dengan program IB kompetitif</div>
+            </div>
+            <div class="b-benefit">
+              <div class="b-check"><svg viewBox="0 0 9 9" fill="none"><path d="M1.5 4.5L3.5 6.5L7.5 2.5" stroke="#1A1A1A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              <div class="b-benefit-txt"><strong>Regulasi ASIC & FCA</strong> — standar perlindungan tertinggi</div>
+            </div>
+            <div class="b-benefit">
+              <div class="b-check"><svg viewBox="0 0 9 9" fill="none"><path d="M1.5 4.5L3.5 6.5L7.5 2.5" stroke="#1A1A1A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              <div class="b-benefit-txt">Akses MT4, MT5, ProTrader & Copy Trading</div>
+            </div>
+            <div class="b-benefit">
+              <div class="b-check"><svg viewBox="0 0 9 9" fill="none"><path d="M1.5 4.5L3.5 6.5L7.5 2.5" stroke="#1A1A1A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              <div class="b-benefit-txt">Segregated account & eksekusi STP/ECN</div>
+            </div>
+          </div>
+          <a href="https://wa.me/6285183153125?text=Halo%20Harvest%20Pips%2C%20saya%20ingin%20daftar%20IB%20Vantage" target="_blank" class="broker-cta">DAFTAR LEWAT HARVESTPIPS →</a>
+        </div>
+      </div>
+      <div class="broker-card">
+        <div class="broker-card-header">
+          <div class="broker-name">Fusion Markets</div>
+          <div class="broker-reg">REG: ASIC · VFSC</div>
+        </div>
+        <div class="broker-card-body">
+          <p class="broker-tagline">Broker berbiaya paling rendah di kelasnya — komisi $2.25/lot dan spread ketat, pilihan favorit scalper dan trader aktif volume tinggi.</p>
+          <div class="broker-stats"><div class="b-stat"><div class="b-stat-n">0.0</div><div class="b-stat-l">Spread mulai (pip)</div></div><div class="b-stat"><div class="b-stat-n">1:500</div><div class="b-stat-l">Leverage maks</div></div><div class="b-stat"><div class="b-stat-n">$0</div><div class="b-stat-l">Deposit minimum</div></div></div>
+          <div class="broker-benefits">
+            <div class="b-benefit">
+              <div class="b-check"><svg viewBox="0 0 9 9" fill="none"><path d="M1.5 4.5L3.5 6.5L7.5 2.5" stroke="#1A1A1A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              <div class="b-benefit-txt">Komisi mulai <strong>$2.25/lot</strong> — salah satu terendah global</div>
+            </div>
+            <div class="b-benefit">
+              <div class="b-check"><svg viewBox="0 0 9 9" fill="none"><path d="M1.5 4.5L3.5 6.5L7.5 2.5" stroke="#1A1A1A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              <div class="b-benefit-txt">Regulasi <strong>ASIC</strong> dengan rekam jejak terpercaya</div>
+            </div>
+            <div class="b-benefit">
+              <div class="b-check"><svg viewBox="0 0 9 9" fill="none"><path d="M1.5 4.5L3.5 6.5L7.5 2.5" stroke="#1A1A1A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              <div class="b-benefit-txt">MT4, MT5 & cTrader tersedia</div>
+            </div>
+            <div class="b-benefit">
+              <div class="b-check"><svg viewBox="0 0 9 9" fill="none"><path d="M1.5 4.5L3.5 6.5L7.5 2.5" stroke="#1A1A1A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              <div class="b-benefit-txt">Tidak ada biaya inactivity & deposit/withdraw gratis</div>
+            </div>
+          </div>
+          <a href="https://wa.me/6285183153125?text=Halo%20Harvest%20Pips%2C%20saya%20ingin%20daftar%20IB%20Fusion%20Markets" target="_blank" class="broker-cta">DAFTAR LEWAT HARVESTPIPS →</a>
+        </div>
+      </div>
+      <div class="broker-card">
+        <div class="broker-card-header">
+          <div class="broker-name">B2Prime</div>
+          <div class="broker-reg">REG: MFSA Malta</div>
+        </div>
+        <div class="broker-card-body">
+          <p class="broker-tagline">Prime of Prime broker institusional — cocok untuk trader dan money manager yang membutuhkan likuiditas dalam, multi-aset, dan infrastruktur profesional.</p>
+          <div class="broker-stats"><div class="b-stat"><div class="b-stat-n">Raw</div><div class="b-stat-l">Spread institusional</div></div><div class="b-stat"><div class="b-stat-n">Fleksibel</div><div class="b-stat-l">Leverage sesuai profil</div></div><div class="b-stat"><div class="b-stat-n">Custom</div><div class="b-stat-l">Deposit (negosiasi)</div></div></div>
+          <div class="broker-benefits">
+            <div class="b-benefit">
+              <div class="b-check"><svg viewBox="0 0 9 9" fill="none"><path d="M1.5 4.5L3.5 6.5L7.5 2.5" stroke="#1A1A1A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              <div class="b-benefit-txt">Akses likuiditas <strong>Tier-1 institusional</strong></div>
+            </div>
+            <div class="b-benefit">
+              <div class="b-check"><svg viewBox="0 0 9 9" fill="none"><path d="M1.5 4.5L3.5 6.5L7.5 2.5" stroke="#1A1A1A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              <div class="b-benefit-txt">Multi-aset: Forex, Kripto, Logam, Indeks, Komoditas</div>
+            </div>
+            <div class="b-benefit">
+              <div class="b-check"><svg viewBox="0 0 9 9" fill="none"><path d="M1.5 4.5L3.5 6.5L7.5 2.5" stroke="#1A1A1A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              <div class="b-benefit-txt">Regulasi <strong>MFSA Malta</strong> — standar EU</div>
+            </div>
+            <div class="b-benefit">
+              <div class="b-check"><svg viewBox="0 0 9 9" fill="none"><path d="M1.5 4.5L3.5 6.5L7.5 2.5" stroke="#1A1A1A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              <div class="b-benefit-txt">Solusi untuk <strong>money manager & fund</strong></div>
+            </div>
+          </div>
+          <a href="https://wa.me/6285183153125?text=Halo%20Harvest%20Pips%2C%20saya%20ingin%20daftar%20IB%20B2Prime" target="_blank" class="broker-cta">DAFTAR LEWAT HARVESTPIPS →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- REBATE -->
+  <section class="sec sec-dark" id="rebate">
+    <div class="sec-eyebrow" style="color:var(--gold-muted);">PROGRAM REBATE</div>
+    <h2 class="sec-h-light">Trading Lebih, <em>Dapat Lebih.</em></h2>
+    <div class="sec-sub-light">Setiap lot yang Anda tradingkan menghasilkan rebate — passive income dari aktivitas trading Anda sendiri.</div>
+    <div class="rebate-layout">
+      <div class="rebate-explain">
+        <div class="rebate-explain-title">Cara Kerja<br><em>Rebate Anda</em></div>
+        <div class="rebate-explain-desc">Rebate adalah pengembalian sebagian spread/komisi broker kepada Anda sebagai penghargaan atas volume trading. Semakin aktif Anda trading, semakin besar rebate yang terkumpul — tanpa syarat profit.</div>
+        <div class="rebate-how">
+          <div class="r-step">
+            <div class="r-step-n">1</div>
+            <div>
+              <div class="r-step-title">TRADING SEPERTI BIASA</div>
+              <div class="r-step-desc">Tidak ada perubahan cara trading. Buka dan tutup posisi seperti yang biasa Anda lakukan.</div>
+            </div>
+          </div>
+          <div class="r-step">
+            <div class="r-step-n">2</div>
+            <div>
+              <div class="r-step-title">REBATE DIHITUNG OTOMATIS</div>
+              <div class="r-step-desc">Setiap lot yang closed, rebate langsung dihitung dan masuk ke rekening rebate Anda.</div>
+            </div>
+          </div>
+          <div class="r-step">
+            <div class="r-step-n">3</div>
+            <div>
+              <div class="r-step-title">CAIRKAN KAPAN SAJA</div>
+              <div class="r-step-desc">Rebate bisa langsung dicairkan ke rekening bank Indonesia, atau digunakan sebagai modal trading tambahan.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="rebate-card">
+          <div class="rebate-card-title">ESTIMASI REBATE PER BROKER</div>
+          <div class="rebate-row">
+            <div class="rebate-row-label">
+              <strong>Exness</strong>
+              Forex — Pair Major
+            </div>
+            <div>
+              <div class="rebate-row-val">hubungi kami<span style="font-size:10px;color:#555;display:block;margin-top:2px;">/lot</span></div>
+              <div class="rebate-row-unit">dikreditkan per lot closed</div>
+            </div>
+          </div>
+          <div class="rebate-bar"><div class="rebate-fill" style="width:80%"></div></div>
+
+          <div class="rebate-row" style="margin-top:16px;">
+            <div class="rebate-row-label">
+              <strong>Exness</strong>
+              Komoditas (Gold, Oil)
+            </div>
+            <div>
+              <div class="rebate-row-val">hubungi kami<span style="font-size:10px;color:#555;display:block;margin-top:2px;">/lot</span></div>
+              <div class="rebate-row-unit">dikreditkan per lot closed</div>
+            </div>
+          </div>
+          <div class="rebate-bar"><div class="rebate-fill" style="width:65%"></div></div>
+
+          <div class="rebate-row" style="margin-top:16px;">
+            <div class="rebate-row-label">
+              <strong>Vantage</strong>
+              Forex — Pair Major
+            </div>
+            <div>
+              <div class="rebate-row-val">hubungi kami<span style="font-size:10px;color:#555;display:block;margin-top:2px;">/lot</span></div>
+              <div class="rebate-row-unit">dikreditkan per lot closed</div>
+            </div>
+          </div>
+          <div class="rebate-bar"><div class="rebate-fill" style="width:90%"></div></div>
+
+          <div class="rebate-row" style="margin-top:16px;">
+            <div class="rebate-row-label">
+              <strong>Fusion Markets</strong>
+              Forex & Komoditas
+            </div>
+            <div>
+              <div class="rebate-row-val">hubungi kami<span style="font-size:10px;color:#555;display:block;margin-top:2px;">/lot</span></div>
+              <div class="rebate-row-unit">dikreditkan per lot closed</div>
+            </div>
+          </div>
+          <div class="rebate-bar"><div class="rebate-fill" style="width:70%"></div></div>
+
+          <div class="rebate-note">
+            <p>* Nilai rebate bersifat indikatif dan dapat berubah sesuai kebijakan broker. Hubungi tim kami untuk konfirmasi nilai rebate terkini.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SUB IB -->
+  <section class="subib-section" id="subib">
+    <div class="subib-layout">
+      <div class="subib-l">
+        <div class="sec-eyebrow-light">PROGRAM SUB-IB</div>
+        <h2 class="subib-title">Punya Jaringan?<br><em>Monetisasi Sekarang.</em></h2>
+        <p class="subib-desc">Bergabung sebagai Sub-IB Harvest Pips dan bangun penghasilan dari jaringan trader yang Anda referensikan. Tidak perlu modal besar — cukup kepercayaan dan koneksi Anda.</p>
+        <div class="subib-perks">
+          <div class="subib-perk">
+            <div class="subib-dash"></div>
+            <div class="subib-perk-txt"><strong>Komisi multi-level</strong> — dapatkan persentase dari rebate trader yang Anda referensikan, secara otomatis.</div>
+          </div>
+          <div class="subib-perk">
+            <div class="subib-dash"></div>
+            <div class="subib-perk-txt"><strong>Dashboard real-time</strong> — pantau volume, rebate, dan komisi jaringan Anda kapan saja.</div>
+          </div>
+          <div class="subib-perk">
+            <div class="subib-dash"></div>
+            <div class="subib-perk-txt"><strong>Materi & support penuh</strong> — kami sediakan edukasi dan tools untuk Anda merekrut dan membina trader.</div>
+          </div>
+          <div class="subib-perk">
+            <div class="subib-dash"></div>
+            <div class="subib-perk-txt"><strong>Tanpa target wajib</strong> — tidak ada tekanan. Kembangkan jaringan sesuai ritme Anda.</div>
+          </div>
+        </div>
+        <a href="#daftar" class="btn-subib">DAFTAR JADI SUB-IB →</a>
+      </div>
+      <div>
+        <div style="font-size:9px;letter-spacing:0.2em;color:#4A7A3A;margin-bottom:14px;">STRUKTUR KOMISI SUB-IB</div>
+        <div class="subib-tiers">
+          <div class="tier">
+            <div>
+              <div class="tier-name">TIER STARTER</div>
+              <div class="tier-req">1–10 trader aktif</div>
+            </div>
+            <div>
+              <div class="tier-commission">[X]%<div class="tier-commission-unit">dari rebate jaringan</div></div>
+            </div>
+          </div>
+          <div class="tier featured">
+            <div>
+              <div class="tier-name">TIER SILVER</div>
+              <div class="tier-req">11–30 trader aktif</div>
+              <div class="tier-badge">PALING POPULER</div>
+            </div>
+            <div>
+              <div class="tier-commission">[X]%<div class="tier-commission-unit">dari rebate jaringan</div></div>
+            </div>
+          </div>
+          <div class="tier">
+            <div>
+              <div class="tier-name">TIER GOLD</div>
+              <div class="tier-req">31+ trader aktif</div>
+            </div>
+            <div>
+              <div class="tier-commission">[X]%<div class="tier-commission-unit">dari rebate jaringan</div></div>
+            </div>
+          </div>
+          <div class="tier" style="background:#1A3A10;">
+            <div>
+              <div class="tier-name">TIER PRESTIGE</div>
+              <div class="tier-req">Volume khusus — by negotiation</div>
+            </div>
+            <div>
+              <div class="tier-commission" style="font-size:20px;">Custom</div>
+            </div>
+          </div>
+        </div>
+        <div style="margin-top:12px;padding:14px;background:#163810;border:0.5px solid #1A3010;">
+          <p style="font-size:11px;color:#3A5A30;line-height:1.7;">* Persentase komisi bersifat ilustrasi. Detail final dikonfirmasi saat onboarding Sub-IB.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- REGULATION & SAFETY -->
+  <section class="reg-section">
+    <div class="sec-eyebrow">KEAMANAN & REGULASI</div>
+    <h2 class="sec-h">Dana Anda <em>Terlindungi.</em></h2>
+    <div class="sec-sub">Kami hanya bermitra dengan broker yang memiliki lisensi resmi dan rekam jejak terpercaya.</div>
+    <div class="reg-grid">
+      <div class="reg-card">
+        <div class="reg-icon">
+          <svg viewBox="0 0 44 44" fill="none">
+            <rect width="44" height="44" fill="#F0EBE0" rx="2"/>
+            <path d="M22 8L34 13.5V21C34 28,28 33,22 34C16 33,10 28,10 21V13.5Z" stroke="#2A5A1E" stroke-width="1.2" fill="none"/>
+            <path d="M16 22L19.5 25.5L28 17" stroke="#F5C200" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <div class="reg-title">Regulasi Resmi</div>
+        <div class="reg-desc">Broker partner kami memiliki lisensi dari otoritas keuangan internasional yang diakui global.</div>
+      </div>
+      <div class="reg-card">
+        <div class="reg-icon">
+          <svg viewBox="0 0 44 44" fill="none">
+            <rect width="44" height="44" fill="#F0EBE0" rx="2"/>
+            <rect x="10" y="16" width="24" height="18" rx="1.5" stroke="#2A5A1E" stroke-width="1.2" fill="none"/>
+            <path d="M16 16V13C16 10.2 18.7 8 22 8C25.3 8 28 10.2 28 13V16" stroke="#2A5A1E" stroke-width="1.2" stroke-linecap="round"/>
+            <circle cx="22" cy="24" r="2.5" fill="#F5C200"/>
+          </svg>
+        </div>
+        <div class="reg-title">Segregated Account</div>
+        <div class="reg-desc">Dana klien disimpan di rekening terpisah — tidak bisa digunakan untuk operasional broker.</div>
+      </div>
+      <div class="reg-card">
+        <div class="reg-icon">
+          <svg viewBox="0 0 44 44" fill="none">
+            <rect width="44" height="44" fill="#F0EBE0" rx="2"/>
+            <circle cx="22" cy="22" r="10" stroke="#2A5A1E" stroke-width="1.2" fill="none"/>
+            <path d="M22 16V22L26 25" stroke="#F5C200" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="reg-title">Eksekusi Transparan</div>
+        <div class="reg-desc">Tidak ada rekayasa harga atau spread tersembunyi. Semua eksekusi tercatat dan dapat diaudit.</div>
+      </div>
+      <div class="reg-card">
+        <div class="reg-icon">
+          <svg viewBox="0 0 44 44" fill="none">
+            <rect width="44" height="44" fill="#F0EBE0" rx="2"/>
+            <path d="M14 28L18 20L22 24L26 16L30 20" stroke="#2A5A1E" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="26" cy="16" r="2" fill="#F5C200"/>
+            <line x1="10" y1="32" x2="34" y2="32" stroke="#DDD5C0" stroke-width="0.8"/>
+          </svg>
+        </div>
+        <div class="reg-title">Proteksi Saldo Negatif</div>
+        <div class="reg-desc">Kerugian Anda tidak akan melebihi deposit — saldo tidak akan minus meski market bergerak ekstrem.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="faq-section">
+    <div class="sec-eyebrow">FAQ</div>
+    <h2 class="sec-h">Pertanyaan yang <em>Sering Ditanya</em></h2>
+    <div class="sec-sub" style="margin-bottom:32px;">Belum menemukan jawaban? Hubungi tim kami langsung.</div>
+    <div class="faq-grid">
+      <div class="faq-item">
+        <div class="faq-q">Apakah daftar lewat Harvest Pips ada biaya tambahan?</div>
+        <div class="faq-a">Tidak ada. Daftar melalui link IB kami sepenuhnya gratis — bahkan Anda mendapat keuntungan lebih berupa rebate yang tidak ada jika daftar langsung.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Apakah rebate bisa langsung dicairkan?</div>
+        <div class="faq-a">Ya, rebate dapat dicairkan ke rekening bank Indonesia sesuai jadwal pencairan masing-masing broker (umumnya mingguan atau bulanan).</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Bagaimana jika saya sudah punya akun di broker tersebut?</div>
+        <div class="faq-a">Untuk menikmati program rebate IB, umumnya diperlukan akun baru yang didaftarkan melalui link referral kami. Hubungi kami untuk opsi migrasi akun.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Apakah perlu ikut mentoring untuk daftar sebagai klien IB?</div>
+        <div class="faq-a">Tidak wajib, namun sangat direkomendasikan. Klien IB yang mengikuti program mentoring Harvest Pips terbukti memiliki konsistensi trading yang lebih baik.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Berapa minimal trader untuk jadi Sub-IB?</div>
+        <div class="faq-a">Tidak ada minimal. Anda bisa mulai dari 1 referral dan komisi tetap berjalan. Semakin banyak trader aktif, semakin tinggi tier dan persentase komisi Anda.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Apakah broker partner Harvest Pips aman untuk trader Indonesia?</div>
+        <div class="faq-a">Ya. Kami hanya bermitra dengan broker berlisensi resmi, mendukung pembayaran via bank lokal, dan memiliki rekam jejak baik di komunitas trader Indonesia.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA DAFTAR -->
+  <section class="cta" id="daftar">
+    <div>
+      <h2 class="cta-h">Siap Daftar &<br><em>Mulai Raih Rebate?</em></h2>
+      <div class="cta-sub">Hubungi tim kami — kami bantu proses pendaftaran dari awal hingga akun Anda aktif.</div>
+    </div>
+    <div class="cta-btns">
+      <a href="https://wa.me/6285183153125?text=Halo%20Harvest%20Pips%2C%20saya%20ingin%20daftar%20sebagai%20klien%20IB" target="_blank">
+        <button class="cta-btn1">DAFTAR VIA WHATSAPP</button>
+      </a>
+      <a href="https://wa.me/6285183153125?text=Halo%2C%20saya%20tertarik%20jadi%20Sub-IB%20Harvest%20Pips" target="_blank">
+        <button class="cta-btn2">Jadi Sub-IB</button>
+      </a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-grid">
+      <div>
+        <div class="ft-brand">Harvest Pips Management</div>
+        <div class="ft-tagline">Konsultan bisnis, keuangan & pajak UMKM,<br>sekaligus IB broker dan mentor trader.<br>Berbasis di Lampung Tengah, Indonesia.</div>
+      </div>
+      <div>
+        <div class="ft-col-h">PROGRAM IB</div>
+        <a class="ft-link" href="#broker">Broker Partner</a>
+        <a class="ft-link" href="#rebate">Program Rebate</a>
+        <a class="ft-link" href="#subib">Jadi Sub-IB</a>
+      </div>
+      <div>
+        <div class="ft-col-h">LAYANAN LAIN</div>
+        <a class="ft-link" href="/#layanan">Konsultasi Bisnis</a>
+        <a class="ft-link" href="/#layanan">Laporan Keuangan</a>
+        <a class="ft-link" href="/#layanan">Tax Planning</a>
+        <a class="ft-link" href="/#layanan">Mentoring Trader</a>
+      </div>
+      <div>
+        <div class="ft-col-h">KONTAK</div>
+        <a class="ft-link" href="#">Lampung Tengah</a>
+        <a class="ft-link" href="https://wa.me/628999783125">WhatsApp</a>
+        <a class="ft-link" href="#">Instagram</a>
+        <a class="ft-link" href="#">LinkedIn</a>
+      </div>
+    </div>
+    <div class="footer-bot">
+      <div class="ft-copy">© 2026 PT Harvest Pips Management. Hak cipta dilindungi.</div>
+      <div class="ft-copy">Lampung Tengah, Lampung · Indonesia</div>
+    </div>
+  </footer>
+
+  <script>
+    // Scroll animation
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.style.animationPlayState = 'running';
+          observer.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.broker-card, .reg-card, .faq-item, .tier, .r-step, .ib-flow-step').forEach(el => {
+      el.style.animationPlayState = 'paused';
+      observer.observe(el);
+    });
+  </script>
+</body>
+</html>
