@@ -362,12 +362,14 @@ export default function App() {
                     ))}
                   </div>
                   <div className="px-8 py-4 border-t border-white/5">
-                    <button
-                      onClick={() => { const el = document.getElementById('kontak'); if(el) el.scrollIntoView({behavior:'smooth'}); }}
-                      className="w-full text-[10px] tracking-widest text-gold border border-gold/20 py-2.5 rounded hover:bg-gold hover:text-dark transition-all font-semibold"
+                    <a
+                      href="/ib-broker.html"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="block w-full text-center text-[10px] tracking-widest text-gold border border-gold/20 py-2.5 rounded hover:bg-gold hover:text-dark transition-all font-semibold"
                     >
-                      DAFTAR VIA HARVESTPIPS → DAPAT REBATE
-                    </button>
+                      LIHAT SEMUA BROKER & REBATE →
+                    </a>
                   </div>
                 </div>
               </div>
