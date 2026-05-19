@@ -5,9 +5,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Program IB Broker — PT Harvest Pips Management</title>
   <meta name="description" content="Daftar trading melalui Harvest Pips Management sebagai Introducing Broker resmi. Dapatkan rebate, spread kompetitif, dan dukungan penuh dari tim profesional." />
+  <link rel="canonical" href="https://harvestpips.com/ib-broker" />
+  <meta property="og:title" content="Program IB Broker — PT Harvest Pips Management" />
+  <meta property="og:description" content="Daftar trading melalui HARVESTPIPS sebagai IB resmi. Nikmati rebate per lot, spread kompetitif, dan dukungan mentor profesional dari Lampung." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://harvestpips.com/ib-broker" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Program IB Broker — PT Harvest Pips Management" />
+  <meta name="twitter:description" content="Daftar trading melalui HARVESTPIPS sebagai IB resmi. Rebate per lot, broker teregulasi, dukungan penuh." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,600&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,700;9..40,800&family=Barlow+Condensed:wght@700;800&family=Poppins:wght@600;700&family=Montserrat:wght@700;800&family=Space+Grotesk:wght@600;700&family=Inter:wght@600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,600&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,700;9..40,800&family=Poppins:wght@600;700&family=Montserrat:wght@700;800&family=Space+Grotesk:wght@600;700&family=Inter:wght@600;700;800&display=swap" rel="stylesheet" />
 
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -51,6 +59,10 @@
     .d2 { animation-delay: 0.22s; }
     .d3 { animation-delay: 0.34s; }
     .d4 { animation-delay: 0.46s; }
+
+    /* Scroll-triggered animation — pakai class, bukan inline style */
+    .anim-hidden { opacity: 0; transform: translateY(18px); transition: opacity 0.55s ease, transform 0.55s ease; }
+    .anim-visible { opacity: 1; transform: translateY(0); }
 
     /* NAV */
     .nav {
@@ -511,7 +523,7 @@
 
     /* Apex Trader Funding — Electric Blue #0026FF (official brand color from Brandfetch) */
     .broker-card[data-broker="apex"] .broker-card-header { background: #00040F; border-bottom: 2px solid #0026FF; }
-    .broker-card[data-broker="apex"] .broker-name { color: #4D70FF; font-family: 'Space Grotesk', sans-serif; font-size: 18px; font-weight: 700; letter-spacing: -0.01em; }
+    .broker-card[data-broker="apex"] .broker-name { color: #6688FF; font-family: 'Space Grotesk', sans-serif; font-size: 18px; font-weight: 700; letter-spacing: -0.01em; }
     .broker-card[data-broker="apex"] .broker-reg { background: #000A20; border-color: #001040; color: #6680CC; }
     .broker-card[data-broker="apex"] .broker-cta { background: #0026FF; color: #fff; }
     .broker-card[data-broker="apex"] .broker-cta:hover { background: #0018CC; }
@@ -547,6 +559,27 @@
       .cta-h { font-size: 30px; }
       .footer { padding: 44px 24px 20px; }
       .footer-grid { grid-template-columns: 1fr 1fr; gap: 28px; }
+    }
+    @media (max-width: 480px) {
+      .nav { padding: 14px 16px; }
+      .logo-name { font-size: 12px; }
+      .btn-nav { padding: 9px 16px; font-size: 11px; }
+      .ib-hero { padding: 36px 16px; }
+      .ib-hero-h1 { font-size: 30px; }
+      .ib-hero-tagline { font-size: 15px; }
+      .strip { padding: 10px 16px; gap: 10px; justify-content: flex-start; overflow-x: auto; flex-wrap: nowrap; }
+      .s-item { flex-shrink: 0; }
+      .sec { padding: 44px 16px; }
+      .reg-section { padding: 44px 16px; }
+      .reg-grid { grid-template-columns: 1fr; }
+      .faq-section { padding: 44px 16px; }
+      .footer { padding: 36px 16px 18px; }
+      .footer-grid { grid-template-columns: 1fr; gap: 24px; }
+      .cta { padding: 40px 16px; }
+      .cta-h { font-size: 26px; }
+      .rebate-layout { gap: 24px; }
+      .broker-card-header { flex-wrap: wrap; gap: 8px; }
+      .broker-reg { font-size: 9px; }
     }
   </style>
 </head>
@@ -601,14 +634,16 @@
 
   <!-- STRIP -->
   <div class="strip">
-    <div class="s-item"><div class="s-n">7+</div><div class="s-l">BROKER PARTNER</div></div>
+    <div class="s-item"><div class="s-n">10+</div><div class="s-l">BROKER PARTNER</div></div>
     <div class="s-dot"></div>
     <div class="s-item"><div class="s-n">$0</div><div class="s-l">BIAYA DAFTAR</div></div>
     <div class="s-dot"></div>
     <div class="s-item"><div class="s-n">Rebate</div><div class="s-l">PER LOT OTOMATIS</div></div>
     <div class="s-dot"></div>
-    <div class="s-item"><div class="s-n">ASIC · FCA</div><div class="s-l">REGULASI INTERNASIONAL</div></div>
+    <div class="s-item"><div class="s-n">Multi-regulasi</div><div class="s-l">ASIC · FCA · CYSEC · NFA</div></div>
   </div>
+
+  <main>
 
   <!-- BROKER PARTNERS -->
   <section class="sec sec-cream" id="broker">
@@ -619,13 +654,13 @@
       <div class="broker-cat-header">
         <div class="broker-cat-label">CFD BROKER</div>
         <div class="broker-cat-line"></div>
-        <div class="broker-cat-count">6 BROKER</div>
+        <div class="broker-cat-count">5 BROKER</div>
       </div>
       <div class="broker-grid">
       <div class="broker-card" data-broker="exness">
         <div class="broker-card-header">
           <div class="broker-header-left">
-            <img class="broker-logo" src="https://logo.clearbit.com/exness.com" alt="Exness" onerror="this.style.display='none'">
+            <img class="broker-logo" loading="lazy" src="https://www.google.com/s2/favicons?sz=64&domain=exness.com" alt="Exness" onerror="this.style.display='none'">
             <div>
               <div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;">
                 <div class="broker-name" style="line-height:1.2;">Exness</div>
@@ -642,7 +677,7 @@
           <div class="broker-benefits">
             <div class="b-benefit">
               <div class="b-check"><svg viewBox="0 0 9 9" fill="none"><path d="M1.5 4.5L3.5 6.5L7.5 2.5" stroke="#1A1A1A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-              <div class="b-benefit-txt"><strong>Rebate 80%</strong> dari komisi IB — langsung dikreditkan ke akun trader setiap hari</div>
+              <div class="b-benefit-txt"><strong>Rebate harian otomatis</strong> dikreditkan langsung ke akun trader — <a href="https://t.me/harvestpips_com" target="_blank" style="color:#FFDE02;text-decoration:none;border-bottom:1px solid rgba(255,222,2,0.4);">tanya angka terkini →</a></div>
             </div>
             <div class="b-benefit">
               <div class="b-check"><svg viewBox="0 0 9 9" fill="none"><path d="M1.5 4.5L3.5 6.5L7.5 2.5" stroke="#1A1A1A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
@@ -671,7 +706,7 @@
       <div class="broker-card" data-broker="m4y">
         <div class="broker-card-header">
           <div class="broker-header-left">
-            <img class="broker-logo" src="https://logo.clearbit.com/markets4you.com" alt="Markets4You" onerror="this.style.display='none'">
+            <img class="broker-logo" loading="lazy" src="https://www.google.com/s2/favicons?sz=64&domain=markets4you.com" alt="Markets4You" onerror="this.style.display='none'">
             <div>
               <div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;">
                 <div class="broker-name" style="line-height:1.2;">Markets4You</div>
@@ -709,7 +744,7 @@
       <div class="broker-card" data-broker="vantage">
         <div class="broker-card-header">
           <div class="broker-header-left">
-            <img class="broker-logo" src="https://logo.clearbit.com/vantagemarkets.com" alt="Vantage" onerror="this.style.display='none'">
+            <img class="broker-logo" loading="lazy" src="https://www.google.com/s2/favicons?sz=64&domain=vantagemarkets.com" alt="Vantage" onerror="this.style.display='none'">
             <div>
               <div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;">
                 <div class="broker-name" style="line-height:1.2;">Vantage</div>
@@ -747,7 +782,7 @@
       <div class="broker-card" data-broker="fusion">
         <div class="broker-card-header">
           <div class="broker-header-left">
-            <img class="broker-logo" src="https://logo.clearbit.com/fusionmarkets.com" alt="Fusion Markets" onerror="this.style.display='none'">
+            <img class="broker-logo" loading="lazy" src="https://www.google.com/s2/favicons?sz=64&domain=fusionmarkets.com" alt="Fusion Markets" onerror="this.style.display='none'">
             <div>
               <div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;">
                 <div class="broker-name" style="line-height:1.2;">Fusion Markets</div>
@@ -786,7 +821,7 @@
       <div class="broker-card" data-broker="icmarkets">
         <div class="broker-card-header">
           <div class="broker-header-left">
-            <img class="broker-logo" src="https://logo.clearbit.com/icmarkets.com" alt="IC Markets" onerror="this.style.display='none'">
+            <img class="broker-logo" loading="lazy" src="https://www.google.com/s2/favicons?sz=64&domain=icmarkets.com" alt="IC Markets" onerror="this.style.display='none'">
             <div>
               <div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;">
                 <div class="broker-name" style="line-height:1.2;">IC Markets</div>
@@ -829,13 +864,13 @@
       <div class="broker-card" data-broker="b2prime">
         <div class="broker-card-header">
           <div class="broker-header-left">
-            <img class="broker-logo" src="https://logo.clearbit.com/b2prime.com" alt="B2Prime" onerror="this.style.display='none'">
+            <img class="broker-logo" loading="lazy" src="https://www.google.com/s2/favicons?sz=64&domain=b2prime.com" alt="B2Prime" onerror="this.style.display='none'">
             <div>
               <div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;">
                 <div class="broker-name" style="line-height:1.2;">B2Prime</div>
-                <span style="font-size:8px;letter-spacing:0.15em;background:#1E293B;color:#94A3B8;padding:2px 7px;border-radius:2px;font-family:'DM Sans',sans-serif;font-weight:700;white-space:nowrap;">PRIME BROKER</span>
+                <span style="font-size:8px;letter-spacing:0.15em;background:#1E293B;color:#94A3B8;padding:2px 7px;border-radius:2px;font-family:'DM Sans',sans-serif;font-weight:700;white-space:nowrap;">PRIME OF PRIME</span>
               </div>
-              <div class="broker-location">Seychelles</div>
+              <div class="broker-location">Seychelles · Untuk money manager & institusi</div>
             </div>
           </div>
           <div class="broker-reg">REG: CySEC · FSA · SCB</div>
@@ -883,7 +918,7 @@
       <div class="broker-card" data-broker="amp">
         <div class="broker-card-header">
           <div class="broker-header-left">
-            <img class="broker-logo" src="https://logo.clearbit.com/ampfutures.com" alt="AMP Futures" onerror="this.style.display='none'">
+            <img class="broker-logo" loading="lazy" src="https://www.google.com/s2/favicons?sz=64&domain=ampfutures.com" alt="AMP Futures" onerror="this.style.display='none'">
             <div>
               <div class="broker-name">AMP Futures <span style="font-size:8px;letter-spacing:0.15em;background:#00A4E4;color:#001A26;padding:2px 6px;margin-left:6px;vertical-align:middle;border-radius:2px;font-family:'DM Sans',sans-serif;font-weight:600;">FUTURES FCM</span></div>
               <div class="broker-location">Chicago, USA</div>
@@ -924,7 +959,7 @@
       <div class="broker-card" data-broker="ninjatrader">
         <div class="broker-card-header">
           <div class="broker-header-left">
-            <img class="broker-logo" src="https://logo.clearbit.com/ninjatrader.com" alt="NinjaTrader" onerror="this.style.display='none'">
+            <img class="broker-logo" loading="lazy" src="https://www.google.com/s2/favicons?sz=64&domain=ninjatrader.com" alt="NinjaTrader" onerror="this.style.display='none'">
             <div>
               <div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;">
                 <div class="broker-name" style="line-height:1.2;">NinjaTrader</div>
@@ -969,7 +1004,7 @@
       <div class="broker-card" data-broker="tradovate">
         <div class="broker-card-header">
           <div class="broker-header-left">
-            <img class="broker-logo" src="https://logo.clearbit.com/tradovate.com" alt="Tradovate" onerror="this.style.display='none'">
+            <img class="broker-logo" loading="lazy" src="https://www.google.com/s2/favicons?sz=64&domain=tradovate.com" alt="Tradovate" onerror="this.style.display='none'">
             <div>
               <div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;">
                 <div class="broker-name" style="line-height:1.2;">Tradovate</div>
@@ -1024,7 +1059,7 @@
       <div class="broker-card" data-broker="apex">
         <div class="broker-card-header" style="flex-wrap:wrap;gap:10px;">
           <div class="broker-header-left" style="flex:1;min-width:0;">
-            <img class="broker-logo" src="https://logo.clearbit.com/apextraderfunding.com" alt="Apex Trader Funding" onerror="this.style.display='none'">
+            <img class="broker-logo" loading="lazy" src="https://www.google.com/s2/favicons?sz=64&domain=apextraderfunding.com" alt="Apex Trader Funding" onerror="this.style.display='none'">
             <div>
               <div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;">
                 <div class="broker-name" style="line-height:1.2;">Apex Trader Funding</div>
@@ -1058,7 +1093,7 @@
             </div>
             <div class="b-benefit">
               <div class="b-check"><svg viewBox="0 0 9 9" fill="none"><path d="M1.5 4.5L3.5 6.5L7.5 2.5" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-              <div class="b-benefit-txt">Kelola hingga <strong>20 akun PA</strong> sekaligus — total $1B+ sudah dibayarkan</div>
+              <div class="b-benefit-txt">Kelola hingga <strong>20 akun</strong> sekaligus — total $1B+ sudah dibayarkan</div>
             </div>
           </div>
           <div style="background:#000A20;border-top:2px solid #0026FF;padding:10px 18px;display:flex;align-items:center;justify-content:space-between;gap:10px;">
@@ -1211,7 +1246,7 @@
           </svg>
         </div>
         <div class="reg-title">Eksekusi Transparan</div>
-        <div class="reg-desc">Tidak ada rekayasa harga atau spread tersembunyi. Semua eksekusi tercatat dan dapat diaudit.</div>
+        <div class="reg-desc">Broker partner kami menggunakan model STP/ECN/NDD — tidak ada dealing desk yang bisa mempengaruhi eksekusi order Anda.</div>
       </div>
       <div class="reg-card">
         <div class="reg-icon">
@@ -1258,6 +1293,19 @@
   </section>
 
   <!-- CTA DAFTAR -->
+  <section class="cta" id="daftar">
+    <div>
+      <h2 class="cta-h">Siap Trading Lebih <em>Menguntungkan?</em></h2>
+      <div class="cta-sub">Daftar lewat HARVESTPIPS — gratis, rebate otomatis, dukungan tim penuh. Pilih broker Anda sekarang.</div>
+    </div>
+    <div class="cta-btns">
+      <a href="https://t.me/harvestpips_com" target="_blank" class="cta-btn1">HUBUNGI KAMI →</a>
+      <button class="cta-btn2" onclick="document.getElementById('broker').scrollIntoView({behavior:'smooth'})">LIHAT BROKER</button>
+    </div>
+  </section>
+
+  </main>
+
   <!-- FOOTER -->
   <footer class="footer">
     <div class="footer-grid">
@@ -1292,19 +1340,21 @@
   </footer>
 
   <script>
-    // Scroll animation
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(e => {
-        if (e.isIntersecting) {
-          e.target.style.animationPlayState = 'running';
-          observer.unobserve(e.target);
-        }
+    // Scroll animation dengan fallback untuk browser lama
+    if ('IntersectionObserver' in window) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+          if (e.isIntersecting) {
+            e.target.classList.add('anim-visible');
+            observer.unobserve(e.target);
+          }
+        });
+      }, { threshold: 0.1 });
+      document.querySelectorAll('.broker-card, .reg-card, .faq-item, .tier, .r-step, .ib-flow-step').forEach(el => {
+        el.classList.add('anim-hidden');
+        observer.observe(el);
       });
-    }, { threshold: 0.1 });
-    document.querySelectorAll('.broker-card, .reg-card, .faq-item, .tier, .r-step, .ib-flow-step').forEach(el => {
-      el.style.animationPlayState = 'paused';
-      observer.observe(el);
-    });
+    }
   </script>
 </body>
 </html>
