@@ -179,10 +179,11 @@
     .sec-sub-light { font-size: 13px; color: #94A3B8; font-weight: 400; margin-bottom: 48px; }
 
     /* BROKER CARDS */
-    .broker-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 24px; }
+    .broker-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 24px; align-items: stretch; }
     .broker-card {
       background: #fff; border: 0.5px solid var(--cream-border);
       overflow: hidden; transition: box-shadow 0.2s, border-color 0.2s;
+      display: flex; flex-direction: column;
     }
     .broker-card:hover { box-shadow: 0 6px 24px rgba(0,0,0,0.08); border-color: var(--gold-dim); }
     .broker-card-header {
@@ -250,13 +251,13 @@
       color: #64748B; background: #162033;
       border: 0.5px solid #243348; padding: 5px 10px;
     }
-    .broker-card-body { padding: 24px 28px; }
+    .broker-card-body { padding: 24px 28px; display: flex; flex-direction: column; flex: 1; }
     .broker-tagline { font-size: 13px; color: var(--mid); font-weight: 300; margin-bottom: 20px; line-height: 1.7; }
     .broker-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--cream-border); margin-bottom: 20px; }
     .b-stat { background: var(--cream); padding: 14px 12px; text-align: center; }
     .b-stat-n { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 600; color: var(--dark); line-height: 1; margin-bottom: 3px; }
     .b-stat-l { font-size: 10px; color: var(--mid); letter-spacing: 0.05em; line-height: 1.4; }
-    .broker-benefits { display: flex; flex-direction: column; gap: 8px; margin-bottom: 22px; }
+    .broker-benefits { display: flex; flex-direction: column; gap: 8px; margin-bottom: 22px; flex: 1; }
     .b-benefit { display: flex; align-items: flex-start; gap: 10px; }
     .b-check {
       width: 16px; height: 16px; background: var(--gold); border-radius: 50%;
