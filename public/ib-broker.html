@@ -481,6 +481,28 @@
     .broker-card[data-broker="icmarkets"] .b-check svg path { stroke: #021A04; }
     .broker-card[data-broker="icmarkets"] .broker-location { color: #28C828; }
     .broker-card[data-broker="icmarkets"] .b-stat-n { font-family: 'Inter', sans-serif; font-weight: 700; font-size: 18px; color: #1A1A1A; letter-spacing: -0.02em; }
+    /* NinjaTrader — Safety Orange #FF6A00 (official rebrand 2023) */
+    .broker-card[data-broker="ninjatrader"] .broker-card-header { background: #120700; border-bottom: 2px solid #FF6A00; }
+    .broker-card[data-broker="ninjatrader"] .broker-name { color: #FF6A00; font-family: 'DM Sans', sans-serif; font-size: 18px; font-weight: 800; letter-spacing: -0.02em; }
+    .broker-card[data-broker="ninjatrader"] .broker-reg { background: #1A0A00; border-color: #3A1800; color: #C86030; }
+    .broker-card[data-broker="ninjatrader"] .broker-cta { background: #FF6A00; color: #120700; }
+    .broker-card[data-broker="ninjatrader"] .broker-cta:hover { background: #DD5500; }
+    .broker-card[data-broker="ninjatrader"] .b-check { background: #FF6A00; }
+    .broker-card[data-broker="ninjatrader"] .b-check svg path { stroke: #120700; }
+    .broker-card[data-broker="ninjatrader"] .broker-location { color: #C86030; }
+    .broker-card[data-broker="ninjatrader"] .b-stat-n { font-family: 'DM Sans', sans-serif; font-weight: 800; font-size: 18px; color: #1A1A1A; letter-spacing: -0.02em; }
+
+    /* Tradovate — Blue #1B6FD8 (official brand color from Brandfetch) */
+    .broker-card[data-broker="tradovate"] .broker-card-header { background: #030D1A; border-bottom: 2px solid #1B6FD8; }
+    .broker-card[data-broker="tradovate"] .broker-name { color: #4D9AFF; font-family: 'Inter', sans-serif; font-size: 19px; font-weight: 700; letter-spacing: -0.02em; }
+    .broker-card[data-broker="tradovate"] .broker-reg { background: #051228; border-color: #0A2040; color: #4D7AAA; }
+    .broker-card[data-broker="tradovate"] .broker-cta { background: #1B6FD8; color: #fff; }
+    .broker-card[data-broker="tradovate"] .broker-cta:hover { background: #1458B0; }
+    .broker-card[data-broker="tradovate"] .b-check { background: #1B6FD8; }
+    .broker-card[data-broker="tradovate"] .b-check svg path { stroke: #fff; }
+    .broker-card[data-broker="tradovate"] .broker-location { color: #4D9AFF; }
+    .broker-card[data-broker="tradovate"] .b-stat-n { font-family: 'Inter', sans-serif; font-weight: 700; font-size: 18px; color: #1A1A1A; letter-spacing: -0.02em; }
+
     /* Apex Trader Funding — Electric Blue #0026FF (official brand color from Brandfetch) */
     .broker-card[data-broker="apex"] .broker-card-header { background: #00040F; border-bottom: 2px solid #0026FF; }
     .broker-card[data-broker="apex"] .broker-name { color: #4D70FF; font-family: 'Space Grotesk', sans-serif; font-size: 18px; font-weight: 700; letter-spacing: -0.01em; }
@@ -593,7 +615,10 @@
           <div class="broker-header-left">
             <img class="broker-logo" src="https://logo.clearbit.com/exness.com" alt="Exness" onerror="this.style.display='none'">
             <div>
-              <div class="broker-name">Exness</div>
+              <div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;">
+                <div class="broker-name" style="line-height:1.2;">Exness</div>
+                <span style="font-size:8px;letter-spacing:0.15em;background:#1E293B;color:#94A3B8;padding:2px 7px;border-radius:2px;font-family:'DM Sans',sans-serif;font-weight:700;white-space:nowrap;">CFD BROKER</span>
+              </div>
               <div class="broker-location">Cyprus</div>
             </div>
           </div>
@@ -636,7 +661,10 @@
           <div class="broker-header-left">
             <img class="broker-logo" src="https://logo.clearbit.com/markets4you.com" alt="Markets4You" onerror="this.style.display='none'">
             <div>
-              <div class="broker-name">Markets4You</div>
+              <div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;">
+                <div class="broker-name" style="line-height:1.2;">Markets4You</div>
+                <span style="font-size:8px;letter-spacing:0.15em;background:#1E293B;color:#94A3B8;padding:2px 7px;border-radius:2px;font-family:'DM Sans',sans-serif;font-weight:700;white-space:nowrap;">CFD BROKER</span>
+              </div>
               <div class="broker-location">British Virgin Islands</div>
             </div>
           </div>
@@ -671,7 +699,10 @@
           <div class="broker-header-left">
             <img class="broker-logo" src="https://logo.clearbit.com/vantagemarkets.com" alt="Vantage" onerror="this.style.display='none'">
             <div>
-              <div class="broker-name">Vantage</div>
+              <div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;">
+                <div class="broker-name" style="line-height:1.2;">Vantage</div>
+                <span style="font-size:8px;letter-spacing:0.15em;background:#1E293B;color:#94A3B8;padding:2px 7px;border-radius:2px;font-family:'DM Sans',sans-serif;font-weight:700;white-space:nowrap;">CFD BROKER</span>
+              </div>
               <div class="broker-location">Vanuatu</div>
             </div>
           </div>
@@ -706,7 +737,10 @@
           <div class="broker-header-left">
             <img class="broker-logo" src="https://logo.clearbit.com/fusionmarkets.com" alt="Fusion Markets" onerror="this.style.display='none'">
             <div>
-              <div class="broker-name">Fusion Markets</div>
+              <div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;">
+                <div class="broker-name" style="line-height:1.2;">Fusion Markets</div>
+                <span style="font-size:8px;letter-spacing:0.15em;background:#1E293B;color:#94A3B8;padding:2px 7px;border-radius:2px;font-family:'DM Sans',sans-serif;font-weight:700;white-space:nowrap;">CFD BROKER</span>
+              </div>
               <div class="broker-location">Australia</div>
             </div>
           </div>
@@ -736,53 +770,16 @@
           <a href="https://t.me/harvestpips_com" target="_blank" class="broker-cta">DAFTAR LEWAT HARVESTPIPS →</a>
         </div>
       </div>
-      <div class="broker-card" data-broker="b2prime">
-        <div class="broker-card-header">
-          <div class="broker-header-left">
-            <img class="broker-logo" src="https://logo.clearbit.com/b2prime.com" alt="B2Prime" onerror="this.style.display='none'">
-            <div>
-              <div class="broker-name">B2Prime</div>
-              <div class="broker-location">Seychelles</div>
-            </div>
-          </div>
-          <div class="broker-reg">REG: CySEC · FSA · SCB</div>
-        </div>
-        <div class="broker-card-body">
-          <p class="broker-tagline">Prime of Prime broker institusional — cocok untuk trader dan money manager yang membutuhkan likuiditas dalam, multi-aset, dan infrastruktur profesional.</p>
-          <div class="broker-stats"><div class="b-stat"><div class="b-stat-n">Raw</div><div class="b-stat-l">Spread institusional</div></div><div class="b-stat"><div class="b-stat-n">1:500</div><div class="b-stat-l">Leverage maks</div></div><div class="b-stat"><div class="b-stat-n">$10</div><div class="b-stat-l">Deposit minimum</div></div></div>
-          <div class="broker-benefits">
-            <div class="b-benefit">
-              <div class="b-check"><svg viewBox="0 0 9 9" fill="none"><path d="M1.5 4.5L3.5 6.5L7.5 2.5" stroke="#020F12" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-              <div class="b-benefit-txt">Akses likuiditas <strong>Tier-1 institusional</strong> — eksekusi NDD ultra-cepat</div>
-            </div>
-            <div class="b-benefit">
-              <div class="b-check"><svg viewBox="0 0 9 9" fill="none"><path d="M1.5 4.5L3.5 6.5L7.5 2.5" stroke="#020F12" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-              <div class="b-benefit-txt">Multi-aset: Forex, Kripto, Logam, Indeks, Komoditas</div>
-            </div>
-            <div class="b-benefit">
-              <div class="b-check"><svg viewBox="0 0 9 9" fill="none"><path d="M1.5 4.5L3.5 6.5L7.5 2.5" stroke="#020F12" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-              <div class="b-benefit-txt">Regulasi <strong>CySEC</strong> — standar ketat Uni Eropa</div>
-            </div>
-            <div class="b-benefit">
-              <div class="b-check"><svg viewBox="0 0 9 9" fill="none"><path d="M1.5 4.5L3.5 6.5L7.5 2.5" stroke="#020F12" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-              <div class="b-benefit-txt">Solusi khusus untuk <strong>money manager & fund</strong></div>
-            </div>
-            <div class="b-benefit">
-              <div class="b-check"><svg viewBox="0 0 9 9" fill="none"><path d="M1.5 4.5L3.5 6.5L7.5 2.5" stroke="#020F12" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-              <div class="b-benefit-txt">Platform trading <strong>B2Trader</strong> & <strong>cTrader</strong></div>
-            </div>
-          </div>
-          <a href="https://t.me/harvestpips_com" target="_blank" class="broker-cta">DAFTAR LEWAT HARVESTPIPS →</a>
-        </div>
-      </div>
-
       <!-- IC MARKETS -->
       <div class="broker-card" data-broker="icmarkets">
         <div class="broker-card-header">
           <div class="broker-header-left">
             <img class="broker-logo" src="https://logo.clearbit.com/icmarkets.com" alt="IC Markets" onerror="this.style.display='none'">
             <div>
-              <div class="broker-name">IC Markets</div>
+              <div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;">
+                <div class="broker-name" style="line-height:1.2;">IC Markets</div>
+                <span style="font-size:8px;letter-spacing:0.15em;background:#1E293B;color:#94A3B8;padding:2px 7px;border-radius:2px;font-family:'DM Sans',sans-serif;font-weight:700;white-space:nowrap;">CFD BROKER</span>
+              </div>
               <div class="broker-location">Australia</div>
             </div>
           </div>
@@ -811,6 +808,49 @@
             <div class="b-benefit">
               <div class="b-check"><svg viewBox="0 0 9 9" fill="none"><path d="M1.5 4.5L3.5 6.5L7.5 2.5" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
               <div class="b-benefit-txt">Regulasi <strong>ASIC</strong> — keamanan dana tier-1</div>
+            </div>
+          </div>
+          <a href="https://t.me/harvestpips_com" target="_blank" class="broker-cta">DAFTAR LEWAT HARVESTPIPS →</a>
+        </div>
+      </div>
+
+      <div class="broker-card" data-broker="b2prime">
+        <div class="broker-card-header">
+          <div class="broker-header-left">
+            <img class="broker-logo" src="https://logo.clearbit.com/b2prime.com" alt="B2Prime" onerror="this.style.display='none'">
+            <div>
+              <div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;">
+                <div class="broker-name" style="line-height:1.2;">B2Prime</div>
+                <span style="font-size:8px;letter-spacing:0.15em;background:#1E293B;color:#94A3B8;padding:2px 7px;border-radius:2px;font-family:'DM Sans',sans-serif;font-weight:700;white-space:nowrap;">PRIME BROKER</span>
+              </div>
+              <div class="broker-location">Seychelles</div>
+            </div>
+          </div>
+          <div class="broker-reg">REG: CySEC · FSA · SCB</div>
+        </div>
+        <div class="broker-card-body">
+          <p class="broker-tagline">Prime of Prime broker institusional — cocok untuk trader dan money manager yang membutuhkan likuiditas dalam, multi-aset, dan infrastruktur profesional.</p>
+          <div class="broker-stats"><div class="b-stat"><div class="b-stat-n">Raw</div><div class="b-stat-l">Spread institusional</div></div><div class="b-stat"><div class="b-stat-n">1:500</div><div class="b-stat-l">Leverage maks</div></div><div class="b-stat"><div class="b-stat-n">$10</div><div class="b-stat-l">Deposit minimum</div></div></div>
+          <div class="broker-benefits">
+            <div class="b-benefit">
+              <div class="b-check"><svg viewBox="0 0 9 9" fill="none"><path d="M1.5 4.5L3.5 6.5L7.5 2.5" stroke="#020F12" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              <div class="b-benefit-txt">Akses likuiditas <strong>Tier-1 institusional</strong> — eksekusi NDD ultra-cepat</div>
+            </div>
+            <div class="b-benefit">
+              <div class="b-check"><svg viewBox="0 0 9 9" fill="none"><path d="M1.5 4.5L3.5 6.5L7.5 2.5" stroke="#020F12" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              <div class="b-benefit-txt">Multi-aset: Forex, Kripto, Logam, Indeks, Komoditas</div>
+            </div>
+            <div class="b-benefit">
+              <div class="b-check"><svg viewBox="0 0 9 9" fill="none"><path d="M1.5 4.5L3.5 6.5L7.5 2.5" stroke="#020F12" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              <div class="b-benefit-txt">Regulasi <strong>CySEC</strong> — standar ketat Uni Eropa</div>
+            </div>
+            <div class="b-benefit">
+              <div class="b-check"><svg viewBox="0 0 9 9" fill="none"><path d="M1.5 4.5L3.5 6.5L7.5 2.5" stroke="#020F12" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              <div class="b-benefit-txt">Solusi khusus untuk <strong>money manager & fund</strong></div>
+            </div>
+            <div class="b-benefit">
+              <div class="b-check"><svg viewBox="0 0 9 9" fill="none"><path d="M1.5 4.5L3.5 6.5L7.5 2.5" stroke="#020F12" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              <div class="b-benefit-txt">Platform trading <strong>B2Trader</strong> & <strong>cTrader</strong></div>
             </div>
           </div>
           <a href="https://t.me/harvestpips_com" target="_blank" class="broker-cta">DAFTAR LEWAT HARVESTPIPS →</a>
@@ -858,17 +898,111 @@
         </div>
       </div>
 
-      <!-- APEX TRADER FUNDING — FUTURES PROP FIRM -->
-      <div class="broker-card" data-broker="apex">
+      <!-- NINJATRADER — FUTURES FCM + PLATFORM -->
+      <div class="broker-card" data-broker="ninjatrader">
         <div class="broker-card-header">
           <div class="broker-header-left">
+            <img class="broker-logo" src="https://logo.clearbit.com/ninjatrader.com" alt="NinjaTrader" onerror="this.style.display='none'">
+            <div>
+              <div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;">
+                <div class="broker-name" style="line-height:1.2;">NinjaTrader</div>
+                <span style="font-size:8px;letter-spacing:0.15em;background:#FF6A00;color:#120700;padding:2px 7px;border-radius:2px;font-family:'DM Sans',sans-serif;font-weight:700;white-space:nowrap;">FUTURES FCM</span>
+                <span style="font-size:8px;letter-spacing:0.15em;background:#1A0A00;color:#C86030;padding:2px 7px;border-radius:2px;font-family:'DM Sans',sans-serif;font-weight:700;white-space:nowrap;">PLATFORM</span>
+              </div>
+              <div class="broker-location">Denver, Colorado — USA</div>
+            </div>
+          </div>
+          <div class="broker-reg" style="white-space:nowrap;">REG: NFA · CFTC</div>
+        </div>
+        <div class="broker-card-body">
+          <p class="broker-tagline">Platform futures paling populer di USA — sekaligus broker FCM terdaftar. Analitik canggih, backtesting, dan ekosistem 600+ add-on dari komunitas.</p>
+          <div class="broker-stats">
+            <div class="b-stat"><div class="b-stat-n">$0.09</div><div class="b-stat-l">Komisi/kontrak mulai</div></div>
+            <div class="b-stat"><div class="b-stat-n">600+</div><div class="b-stat-l">Add-on & tools</div></div>
+            <div class="b-stat"><div class="b-stat-n">Free</div><div class="b-stat-l">Platform (sim gratis)</div></div>
+          </div>
+          <div class="broker-benefits">
+                        <div class="b-benefit">
+              <div class="b-check"><svg viewBox="0 0 9 9" fill="none"><path d="M1.5 4.5L3.5 6.5L7.5 2.5" stroke="#0A0800" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              <div class="b-benefit-txt">Platform NinjaTrader 8 — charting, backtesting & automation terlengkap</div>
+            </div>
+                        <div class="b-benefit">
+              <div class="b-check"><svg viewBox="0 0 9 9" fill="none"><path d="M1.5 4.5L3.5 6.5L7.5 2.5" stroke="#0A0800" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              <div class="b-benefit-txt">Regulasi <strong>NFA & CFTC</strong> — FCM terdaftar langsung di USA</div>
+            </div>
+                        <div class="b-benefit">
+              <div class="b-check"><svg viewBox="0 0 9 9" fill="none"><path d="M1.5 4.5L3.5 6.5L7.5 2.5" stroke="#0A0800" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              <div class="b-benefit-txt">Akses <strong>CME Group</strong> — ES, NQ, CL, GC, 6E, ZB & lebih</div>
+            </div>
+                        <div class="b-benefit">
+              <div class="b-check"><svg viewBox="0 0 9 9" fill="none"><path d="M1.5 4.5L3.5 6.5L7.5 2.5" stroke="#0A0800" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              <div class="b-benefit-txt">Ekosistem <strong>600+ add-on</strong> dari komunitas trader profesional</div>
+            </div>
+          </div>
+        </div>
+        <a href="https://t.me/harvestpips_com" target="_blank" class="broker-cta">INFO & DAFTAR LEWAT HARVESTPIPS →</a>
+      </div>
+
+      <!-- TRADOVATE — FUTURES FCM CLOUD-NATIVE -->
+      <div class="broker-card" data-broker="tradovate">
+        <div class="broker-card-header">
+          <div class="broker-header-left">
+            <img class="broker-logo" src="https://logo.clearbit.com/tradovate.com" alt="Tradovate" onerror="this.style.display='none'">
+            <div>
+              <div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;">
+                <div class="broker-name" style="line-height:1.2;">Tradovate</div>
+                <span style="font-size:8px;letter-spacing:0.15em;background:#1B6FD8;color:#fff;padding:2px 7px;border-radius:2px;font-family:'DM Sans',sans-serif;font-weight:700;white-space:nowrap;">FUTURES FCM</span>
+                <span style="font-size:8px;letter-spacing:0.15em;background:#051228;color:#4D7AAA;padding:2px 7px;border-radius:2px;font-family:'DM Sans',sans-serif;font-weight:700;white-space:nowrap;">CLOUD-NATIVE</span>
+              </div>
+              <div class="broker-location">Chicago, Illinois — USA</div>
+            </div>
+          </div>
+          <div class="broker-reg" style="white-space:nowrap;">REG: NFA · CFTC</div>
+        </div>
+        <div class="broker-card-body">
+          <p class="broker-tagline">Broker futures berbasis cloud — akses dari browser, tablet, dan mobile tanpa install. Komisi flat unlimited trading dengan biaya bulanan tetap.</p>
+          <div class="broker-stats">
+            <div class="b-stat"><div class="b-stat-n">$0.10</div><div class="b-stat-l">Komisi/kontrak mulai</div></div>
+            <div class="b-stat"><div class="b-stat-n">Flat</div><div class="b-stat-l">Unlimited plan tersedia</div></div>
+            <div class="b-stat"><div class="b-stat-n">$0</div><div class="b-stat-l">Deposit minimum</div></div>
+          </div>
+          <div class="broker-benefits">
+                        <div class="b-benefit">
+              <div class="b-check"><svg viewBox="0 0 9 9" fill="none"><path d="M1.5 4.5L3.5 6.5L7.5 2.5" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              <div class="b-benefit-txt">Cloud-based — trading dari <strong>browser, iOS & Android</strong> tanpa install</div>
+            </div>
+                        <div class="b-benefit">
+              <div class="b-check"><svg viewBox="0 0 9 9" fill="none"><path d="M1.5 4.5L3.5 6.5L7.5 2.5" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              <div class="b-benefit-txt">Regulasi <strong>NFA & CFTC</strong> — FCM terdaftar & diawasi ketat</div>
+            </div>
+                        <div class="b-benefit">
+              <div class="b-check"><svg viewBox="0 0 9 9" fill="none"><path d="M1.5 4.5L3.5 6.5L7.5 2.5" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              <div class="b-benefit-txt">Unlimited trading dengan <strong>biaya bulanan flat</strong> — ideal volume tinggi</div>
+            </div>
+                        <div class="b-benefit">
+              <div class="b-check"><svg viewBox="0 0 9 9" fill="none"><path d="M1.5 4.5L3.5 6.5L7.5 2.5" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              <div class="b-benefit-txt">Replay market, bracket order & DOM depth of market terintegrasi</div>
+            </div>
+          </div>
+        </div>
+        <a href="https://t.me/harvestpips_com" target="_blank" class="broker-cta">INFO & DAFTAR LEWAT HARVESTPIPS →</a>
+      </div>
+
+            <!-- APEX TRADER FUNDING — FUTURES PROP FIRM -->
+      <div class="broker-card" data-broker="apex">
+        <div class="broker-card-header" style="flex-wrap:wrap;gap:10px;">
+          <div class="broker-header-left" style="flex:1;min-width:0;">
             <img class="broker-logo" src="https://logo.clearbit.com/apextraderfunding.com" alt="Apex Trader Funding" onerror="this.style.display='none'">
             <div>
-              <div class="broker-name">Apex Trader Funding <span style="font-size:8px;letter-spacing:0.15em;background:#0026FF;color:#fff;padding:2px 6px;margin-left:6px;vertical-align:middle;border-radius:2px;font-family:'DM Sans',sans-serif;font-weight:600;">FUTURES PROP</span></div>
+              <div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;">
+                <div class="broker-name" style="line-height:1.2;">Apex Trader Funding</div>
+                <span style="font-size:8px;letter-spacing:0.15em;background:#0026FF;color:#fff;padding:2px 7px;border-radius:2px;font-family:'DM Sans',sans-serif;font-weight:700;white-space:nowrap;">FUTURES</span>
+                <span style="font-size:8px;letter-spacing:0.15em;background:#334155;color:#94A3B8;padding:2px 7px;border-radius:2px;font-family:'DM Sans',sans-serif;font-weight:700;white-space:nowrap;">PROP</span>
+              </div>
               <div class="broker-location">Austin, Texas — USA</div>
             </div>
           </div>
-          <div class="broker-reg">EVALUATION · ONE-STEP</div>
+          <div class="broker-reg" style="white-space:nowrap;align-self:flex-start;">EVALUATION · ONE-STEP</div>
         </div>
         <div class="broker-card-body">
           <p class="broker-tagline">Prop firm futures #1 dunia — trading ES, NQ, CL tanpa modal sendiri. Lolos evaluasi 1 langkah, langsung dapat funded account hingga $300.000.</p>
