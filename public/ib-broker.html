@@ -179,6 +179,12 @@
     .sec-sub-light { font-size: 13px; color: #94A3B8; font-weight: 400; margin-bottom: 48px; }
 
     /* BROKER CARDS */
+    .broker-category { margin-bottom: 48px; }
+    .broker-category:last-child { margin-bottom: 0; }
+    .broker-cat-header { display: flex; align-items: center; gap: 16px; margin-bottom: 16px; }
+    .broker-cat-label  { font-size: 9px; letter-spacing: 0.24em; font-weight: 700; color: var(--muted); white-space: nowrap; }
+    .broker-cat-line   { flex: 1; height: 1px; background: var(--cream-border); }
+    .broker-cat-count  { font-size: 9px; color: var(--faint); letter-spacing: 0.1em; background: var(--cream-dark); border: 1px solid var(--cream-border); padding: 2px 8px; white-space: nowrap; }
     .broker-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 24px; align-items: stretch; }
     .broker-card {
       background: #fff; border: 0.5px solid var(--cream-border);
@@ -609,7 +615,13 @@
     <div class="sec-eyebrow">BROKER PARTNER KAMI</div>
     <h2 class="sec-h">Pilih Broker yang <em>Tepat untuk Anda</em></h2>
     <div class="sec-sub">Kami bermitra dengan broker global teregulasi — masing-masing dengan keunggulan berbeda.</div>
-    <div class="broker-grid">
+    <div class="broker-category">
+      <div class="broker-cat-header">
+        <div class="broker-cat-label">CFD BROKER</div>
+        <div class="broker-cat-line"></div>
+        <div class="broker-cat-count">6 BROKER</div>
+      </div>
+      <div class="broker-grid">
       <div class="broker-card" data-broker="exness">
         <div class="broker-card-header">
           <div class="broker-header-left">
@@ -857,6 +869,16 @@
         </div>
       </div>
 
+      </div>
+    </div>
+
+    <div class="broker-category">
+      <div class="broker-cat-header">
+        <div class="broker-cat-label">FUTURES FCM BROKER</div>
+        <div class="broker-cat-line"></div>
+        <div class="broker-cat-count">3 BROKER</div>
+      </div>
+      <div class="broker-grid">
       <!-- AMP FUTURES — USA FCM BROKER -->
       <div class="broker-card" data-broker="amp">
         <div class="broker-card-header">
@@ -988,7 +1010,17 @@
         <a href="https://t.me/harvestpips_com" target="_blank" class="broker-cta">INFO & DAFTAR LEWAT HARVESTPIPS →</a>
       </div>
 
-            <!-- APEX TRADER FUNDING — FUTURES PROP FIRM -->
+      </div>
+    </div>
+
+    <div class="broker-category">
+      <div class="broker-cat-header">
+        <div class="broker-cat-label">FUTURES PROP FIRM</div>
+        <div class="broker-cat-line"></div>
+        <div class="broker-cat-count">1 BROKER</div>
+      </div>
+      <div class="broker-grid" style="grid-template-columns: repeat(auto-fill, minmax(340px, 420px));">
+      <!-- APEX TRADER FUNDING — FUTURES PROP FIRM -->
       <div class="broker-card" data-broker="apex">
         <div class="broker-card-header" style="flex-wrap:wrap;gap:10px;">
           <div class="broker-header-left" style="flex:1;min-width:0;">
@@ -1040,6 +1072,7 @@
         </div>
       </div>
 
+      </div>
     </div>
   </section>
 
