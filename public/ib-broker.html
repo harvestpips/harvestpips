@@ -10,9 +10,13 @@
   <meta property="og:description" content="Daftar trading melalui HARVESTPIPS sebagai IB resmi. Nikmati rebate per lot, spread kompetitif, dan dukungan mentor profesional dari Lampung." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://harvestpips.com/ib-broker" />
+  <meta property="og:image" content="https://harvestpips.com/og-ib-broker.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Program IB Broker — PT Harvest Pips Management" />
   <meta name="twitter:description" content="Daftar trading melalui HARVESTPIPS sebagai IB resmi. Rebate per lot, broker teregulasi, dukungan penuh." />
+  <meta name="twitter:image" content="https://harvestpips.com/og-ib-broker.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,600&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,700;9..40,800&family=Poppins:wght@600;700&family=Montserrat:wght@700;800&family=Space+Grotesk:wght@600;700&family=Inter:wght@600;700;800&display=swap" rel="stylesheet" />
@@ -37,9 +41,6 @@
       --cream: #FCFBF9;
       --cream-dark: #F4F1EC;
       --cream-border: #E5E1D8;
-      --green-dark: #1E4A14;
-      --green-darker: #163810;
-      --green-txt: #6AAA50;
       --dark: #111821;
       --dark2: #1E293B;
       --dark3: #334155;
@@ -123,13 +124,6 @@
       transition: background 0.2s, transform 0.15s;
     }
     .btn-gold:hover { background: var(--gold-dim); transform: translateY(-1px); }
-    .btn-ghost-dark {
-      background: transparent; color: #94A3B8;
-      font-size: 12px; letter-spacing: 0.06em;
-      padding: 13px 28px; border: 1px solid #2D4060;
-      border-radius: var(--radius); transition: border-color 0.2s, color 0.2s;
-    }
-    .btn-ghost-dark:hover { border-color: #64748B; color: #ccc; }
 
     /* IB hero right — what is IB */
     .ib-what {
@@ -164,7 +158,7 @@
       gap: 24px; flex-wrap: wrap;
     }
     .s-item { display: flex; flex-direction: column; align-items: center; }
-    .s-n    { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 600; color: var(--dark); line-height: 1; }
+    .s-n    { font-family: 'DM Sans', sans-serif; font-size: 22px; font-weight: 800; letter-spacing: -0.02em; color: var(--dark); line-height: 1; }
     .s-l    { font-size: 8px; letter-spacing: 0.16em; color: var(--gold-muted); font-weight: 700; margin-top: 2px; }
     .s-dot  { width: 4px; height: 4px; background: var(--dark); border-radius: 50%; opacity: 0.2; flex-shrink: 0; margin: 0 24px; align-self: center; }
 
@@ -205,11 +199,27 @@
     }
     .broker-card:hover { box-shadow: 0 6px 24px rgba(0,0,0,0.08); border-color: var(--gold-dim); }
     .broker-card-header {
-      background: var(--dark); padding: 20px 28px;
+      background: var(--dark); padding: 16px 28px;
       display: flex; align-items: center; justify-content: space-between;
+      gap: 12px;
     }
-    .broker-header-left { display: flex; align-items: center; gap: 10px; }
+    .broker-header-left { display: flex; align-items: center; gap: 10px; flex: 1; min-width: 0; }
     .broker-header-left > div { display: flex; flex-direction: column; justify-content: center; }
+    .broker-header-right {
+      display: flex; flex-direction: column; align-items: flex-end; gap: 5px;
+      flex-shrink: 0;
+    }
+    .broker-exec {
+      font-size: 9px; font-weight: 700; letter-spacing: 0.12em;
+      padding: 3px 8px; border-radius: 2px; white-space: nowrap;
+    }
+    .broker-exec.ecn  { background: #1A3A22; color: #6ECC88; border: 0.5px solid #2A5A34; }
+    .broker-exec.stp  { background: #1A2A50; color: #7AAAEE; border: 0.5px solid #2A4080; }
+    .broker-exec.mm   { background: #3A2800; color: #D4A040; border: 0.5px solid #5A4000; }
+    .broker-exec.ndd  { background: #2A1A40; color: #B090E0; border: 0.5px solid #3A2860; }
+    .broker-exec.dma  { background: #0A2030; color: #60C0E0; border: 0.5px solid #1A4060; }
+    .broker-exec.lp   { background: #201040; color: #C0A0E8; border: 0.5px solid #341860; }
+    .broker-exec.hybrid { background: #1A1A1A; color: #888; border: 0.5px solid #333; }
     .broker-logo {
       width: 28px; height: 28px; border-radius: 6px;
       object-fit: contain; flex-shrink: 0;
@@ -271,10 +281,11 @@
     }
     .broker-card-body { padding: 24px 28px; display: flex; flex-direction: column; flex: 1; }
     .broker-tagline { font-size: 13px; color: var(--mid); font-weight: 300; margin-bottom: 20px; line-height: 1.7; }
-    .broker-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--cream-border); margin-bottom: 20px; }
+    .broker-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--cream-border); margin-bottom: 0; }
     .b-stat { background: var(--cream); padding: 14px 12px; text-align: center; }
     .b-stat-n { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 600; color: var(--dark); line-height: 1; margin-bottom: 3px; }
     .b-stat-l { font-size: 10px; color: var(--mid); letter-spacing: 0.05em; line-height: 1.4; }
+
     .broker-benefits { display: flex; flex-direction: column; gap: 8px; margin-bottom: 22px; flex: 1; }
     .b-benefit { display: flex; align-items: flex-start; gap: 10px; }
     .b-check {
@@ -294,7 +305,6 @@
 
     /* REBATE SECTION */
     .rebate-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; align-items: start; }
-    .rebate-explain { }
     .rebate-explain-title {
       font-family: 'Cormorant Garamond', serif;
       font-size: 28px; font-weight: 500; color: #F5EED8;
@@ -327,9 +337,8 @@
     .rebate-fill { height: 100%; background: var(--gold); border-radius: 1px; animation: barGrow 1.2s ease both; animation-delay: 0.4s; }
     .rebate-note { margin-top: 20px; padding: 14px; background: #111821; border: 0.5px solid #1E293B; }
     .rebate-note p { font-size: 11px; color: #B8A050; line-height: 1.7; }
-
-
-    /* REGULATION */
+          
+/* REGULATION */
     .reg-section { padding: 72px 48px; background: var(--cream-dark); }
     .reg-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
     .reg-card {
@@ -342,12 +351,36 @@
     .reg-title { font-size: 13px; font-weight: 500; color: var(--dark); margin-bottom: 6px; }
     .reg-desc  { font-size: 11px; color: var(--muted); line-height: 1.65; font-weight: 300; }
 
-    /* FAQ */
+    /* FAQ Accordion */
     .faq-section { padding: 72px 48px; background: var(--cream); }
-    .faq-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; max-width: 900px; }
-    .faq-item { background: #fff; border: 0.5px solid var(--cream-border); padding: 22px 24px; }
-    .faq-q { font-size: 13px; font-weight: 500; color: var(--dark); margin-bottom: 8px; }
-    .faq-a { font-size: 12px; color: var(--muted); line-height: 1.75; font-weight: 300; }
+    .faq-list { display: flex; flex-direction: column; gap: 1px; max-width: 780px; }
+    .faq-item {
+      background: #fff; border: 0.5px solid var(--cream-border);
+      overflow: hidden;
+    }
+    .faq-q {
+      font-size: 13px; font-weight: 500; color: var(--dark);
+      padding: 20px 24px; cursor: pointer;
+      display: flex; align-items: center; justify-content: space-between; gap: 16px;
+      user-select: none; transition: background 0.15s;
+      border: none; background: transparent; width: 100%; text-align: left;
+      font-family: inherit;
+    }
+    .faq-q:hover { background: var(--cream-dark); }
+    .faq-icon {
+      width: 18px; height: 18px; flex-shrink: 0;
+      border: 1px solid var(--cream-border); border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      transition: transform 0.25s, background 0.2s, border-color 0.2s;
+    }
+    .faq-icon svg { width: 8px; height: 8px; }
+    .faq-item.open .faq-icon { transform: rotate(45deg); background: var(--gold); border-color: var(--gold); }
+    .faq-a {
+      font-size: 12px; color: var(--muted); line-height: 1.75; font-weight: 300;
+      padding: 0 24px; max-height: 0; overflow: hidden;
+      transition: max-height 0.3s ease, padding 0.3s ease;
+    }
+    .faq-item.open .faq-a { max-height: 500px; padding: 0 24px 20px; }
 
     /* CTA */
     .cta {
@@ -554,7 +587,6 @@
       .reg-section { padding: 56px 24px; }
       .reg-grid { grid-template-columns: 1fr 1fr; }
       .faq-section { padding: 56px 24px; }
-      .faq-grid { grid-template-columns: 1fr; }
       .cta { grid-template-columns: 1fr; gap: 28px; padding: 52px 24px; }
       .cta-h { font-size: 30px; }
       .footer { padding: 44px 24px 20px; }
@@ -589,7 +621,7 @@
   <nav class="nav">
     <div class="logo">
       <div class="logo-mark">
-        <img src="./logo.png" alt="HARVESTPIPS Logo" style="width:40px;height:40px;object-fit:contain;display:block;" />
+        <img src="/logo.png" alt="HARVESTPIPS Logo" style="width:40px;height:40px;object-fit:contain;display:block;" />
       </div>
       <div>
         <div class="logo-name">HARVESTPIPS</div>
@@ -599,6 +631,8 @@
     <a href="/" class="nav-back">← Kembali ke Halaman Utama</a>
     <button class="btn-nav" onclick="document.getElementById('daftar').scrollIntoView({behavior:'smooth'})">DAFTAR SEKARANG</button>
   </nav>
+
+  <main>
 
   <!-- HERO -->
   <section class="ib-hero">
@@ -634,16 +668,16 @@
 
   <!-- STRIP -->
   <div class="strip">
-    <div class="s-item"><div class="s-n">10+</div><div class="s-l">BROKER PARTNER</div></div>
+    <div class="s-item"><div class="s-n">5</div><div class="s-l">BROKER CFD</div></div>
+    <div class="s-dot"></div>
+    <div class="s-item"><div class="s-n">1</div><div class="s-l">LIQUIDITY PROVIDER</div></div>
+    <div class="s-dot"></div>
+    <div class="s-item"><div class="s-n">3</div><div class="s-l">BROKER FUTURES</div></div>
+    <div class="s-dot"></div>
+    <div class="s-item"><div class="s-n">1</div><div class="s-l">FUTURES PROP FIRM</div></div>
     <div class="s-dot"></div>
     <div class="s-item"><div class="s-n">$0</div><div class="s-l">BIAYA DAFTAR</div></div>
-    <div class="s-dot"></div>
-    <div class="s-item"><div class="s-n">Rebate</div><div class="s-l">PER LOT OTOMATIS</div></div>
-    <div class="s-dot"></div>
-    <div class="s-item"><div class="s-n">Multi-regulasi</div><div class="s-l">ASIC · FCA · CYSEC · NFA</div></div>
   </div>
-
-  <main>
 
   <!-- BROKER PARTNERS -->
   <section class="sec sec-cream" id="broker">
@@ -654,7 +688,7 @@
       <div class="broker-cat-header">
         <div class="broker-cat-label">CFD BROKER</div>
         <div class="broker-cat-line"></div>
-        <div class="broker-cat-count">5 BROKER</div>
+        <div class="broker-cat-count">5 CFD</div>
       </div>
       <div class="broker-grid">
       <div class="broker-card" data-broker="exness">
@@ -669,12 +703,16 @@
               <div class="broker-location">Cyprus</div>
             </div>
           </div>
-          <div class="broker-reg">REG: CySEC · FCA · FSCA</div>
+                    <div class="broker-header-right">
+            <div class="broker-reg">REG: CySEC · FCA · FSCA</div>
+            <div style="display:flex;gap:4px;flex-wrap:wrap;justify-content:flex-end;margin-top:4px;"><span class="broker-exec hybrid">HYBRID</span><span class="broker-exec mm">MM / ECN·STP</span></div>
+          </div>
         </div>
         <div class="broker-card-body">
           <p class="broker-tagline">Pilihan utama trader forex Indonesia — spread ultra-rendah, leverage fleksibel, dan deposit/withdraw via bank lokal tanpa biaya.</p>
           <div class="broker-stats"><div class="b-stat"><div class="b-stat-n">0.0</div><div class="b-stat-l">Spread mulai (pip)</div></div><div class="b-stat"><div class="b-stat-n exness-stat">1:Unlimited</div><div class="b-stat-l">Leverage (Pro)</div></div><div class="b-stat"><div class="b-stat-n">$10</div><div class="b-stat-l">Deposit minimum</div></div></div>
-          <div class="broker-benefits">
+          
+<div class="broker-benefits">
             <div class="b-benefit">
               <div class="b-check"><svg viewBox="0 0 9 9" fill="none"><path d="M1.5 4.5L3.5 6.5L7.5 2.5" stroke="#1A1A1A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
               <div class="b-benefit-txt"><strong>Rebate harian otomatis</strong> dikreditkan langsung ke akun trader — <a href="https://t.me/harvestpips_com" target="_blank" style="color:#FFDE02;text-decoration:none;border-bottom:1px solid rgba(255,222,2,0.4);">tanya angka terkini →</a></div>
@@ -715,7 +753,10 @@
               <div class="broker-location">British Virgin Islands</div>
             </div>
           </div>
-          <div class="broker-reg">REG: BVI FSC</div>
+                    <div class="broker-header-right">
+            <div class="broker-reg">REG: BVI FSC</div>
+            <div style="display:flex;gap:4px;flex-wrap:wrap;justify-content:flex-end;margin-top:4px;"><span class="broker-exec hybrid">HYBRID</span><span class="broker-exec mm">MM / STP</span></div>
+          </div>
         </div>
         <div class="broker-card-body">
           <p class="broker-tagline">Broker global dengan produk beragam — cocok untuk trader yang ingin eksplorasi pasar Forex, Saham, hingga Komoditas dalam satu platform.</p>
@@ -753,7 +794,10 @@
               <div class="broker-location">Vanuatu</div>
             </div>
           </div>
-          <div class="broker-reg">REG: VFSC · ASIC · FCA</div>
+                    <div class="broker-header-right">
+            <div class="broker-reg">REG: VFSC · ASIC · FCA</div>
+            <div style="display:flex;gap:4px;flex-wrap:wrap;justify-content:flex-end;margin-top:4px;"><span class="broker-exec stp">STP</span><span class="broker-exec ecn">ECN</span><span class="broker-exec ndd">NDD</span></div>
+          </div>
         </div>
         <div class="broker-card-body">
           <p class="broker-tagline">ECN broker teregulasi ketat — ideal untuk trader yang mengutamakan eksekusi bersih, spread kompetitif, dan regulasi berlapis.</p>
@@ -791,7 +835,10 @@
               <div class="broker-location">Australia</div>
             </div>
           </div>
-          <div class="broker-reg">REG: ASIC · VFSC</div>
+                    <div class="broker-header-right">
+            <div class="broker-reg">REG: ASIC · VFSC</div>
+            <div style="display:flex;gap:4px;flex-wrap:wrap;justify-content:flex-end;margin-top:4px;"><span class="broker-exec ecn">ECN</span><span class="broker-exec stp">STP</span><span class="broker-exec ndd">NDD</span></div>
+          </div>
         </div>
         <div class="broker-card-body">
           <p class="broker-tagline">Broker berbiaya paling rendah di kelasnya — komisi <strong>$2.25/lot</strong> dan spread ketat, pilihan favorit scalper dan trader aktif volume tinggi.</p>
@@ -830,7 +877,10 @@
               <div class="broker-location">Australia</div>
             </div>
           </div>
-          <div class="broker-reg">REG: ASIC · CySEC · FSA</div>
+                    <div class="broker-header-right">
+            <div class="broker-reg">REG: ASIC · CySEC · FSA</div>
+            <div style="display:flex;gap:4px;flex-wrap:wrap;justify-content:flex-end;margin-top:4px;"><span class="broker-exec ecn">ECN</span><span class="broker-exec stp">STP</span><span class="broker-exec ndd">NDD</span></div>
+          </div>
         </div>
         <div class="broker-card-body">
           <p class="broker-tagline">Broker terbesar dunia by volume — spread raw mulai 0.0 pip, eksekusi ultra-cepat, pilihan utama scalper dan EA trader profesional.</p>
@@ -861,6 +911,16 @@
         </div>
       </div>
 
+      </div>
+    </div>
+
+    <div class="broker-category">
+      <div class="broker-cat-header">
+        <div class="broker-cat-label">LIQUIDITY PROVIDER</div>
+        <div class="broker-cat-line"></div>
+        <div class="broker-cat-count">1 LP</div>
+      </div>
+      <div class="broker-grid" style="grid-template-columns: repeat(auto-fill, minmax(340px, 480px));">
       <div class="broker-card" data-broker="b2prime">
         <div class="broker-card-header">
           <div class="broker-header-left">
@@ -873,7 +933,10 @@
               <div class="broker-location">Seychelles · Untuk money manager & institusi</div>
             </div>
           </div>
-          <div class="broker-reg">REG: CySEC · FSA · SCB</div>
+                    <div class="broker-header-right">
+            <div class="broker-reg">REG: CySEC · FSA · SCB</div>
+            <div style="display:flex;gap:4px;flex-wrap:wrap;justify-content:flex-end;margin-top:4px;"><span class="broker-exec lp">PRIME OF PRIME</span><span class="broker-exec ndd">NDD</span></div>
+          </div>
         </div>
         <div class="broker-card-body">
           <p class="broker-tagline">Prime of Prime broker institusional — cocok untuk trader dan money manager yang membutuhkan likuiditas dalam, multi-aset, dan infrastruktur profesional.</p>
@@ -911,7 +974,7 @@
       <div class="broker-cat-header">
         <div class="broker-cat-label">FUTURES FCM BROKER</div>
         <div class="broker-cat-line"></div>
-        <div class="broker-cat-count">3 BROKER</div>
+        <div class="broker-cat-count">3 FCM</div>
       </div>
       <div class="broker-grid">
       <!-- AMP FUTURES — USA FCM BROKER -->
@@ -924,7 +987,10 @@
               <div class="broker-location">Chicago, USA</div>
             </div>
           </div>
-          <div class="broker-reg">REG: NFA · CFTC</div>
+                    <div class="broker-header-right">
+            <div class="broker-reg">REG: NFA · CFTC</div>
+            <div style="display:flex;gap:4px;flex-wrap:wrap;justify-content:flex-end;margin-top:4px;"><span class="broker-exec dma">DMA · EXCHANGE</span></div>
+          </div>
         </div>
         <div class="broker-card-body">
           <p class="broker-tagline">Broker futures terdaftar di US dengan 50+ platform trading — komisi ultra-murah mulai $0.42/kontrak, akses CME, CBOT, COMEX & NYMEX langsung.</p>
@@ -969,7 +1035,10 @@
               <div class="broker-location">Denver, Colorado — USA</div>
             </div>
           </div>
-          <div class="broker-reg" style="white-space:nowrap;">REG: NFA · CFTC</div>
+                    <div class="broker-header-right">
+            <div class="broker-reg" style="white-space:nowrap;">REG: NFA · CFTC</div>
+            <div style="display:flex;gap:4px;flex-wrap:wrap;justify-content:flex-end;margin-top:4px;"><span class="broker-exec dma">DMA · EXCHANGE</span></div>
+          </div>
         </div>
         <div class="broker-card-body">
           <p class="broker-tagline">Platform futures paling populer di USA — sekaligus broker FCM terdaftar. Analitik canggih, backtesting, dan ekosistem 600+ add-on dari komunitas.</p>
@@ -1014,7 +1083,10 @@
               <div class="broker-location">Chicago, Illinois — USA</div>
             </div>
           </div>
-          <div class="broker-reg" style="white-space:nowrap;">REG: NFA · CFTC</div>
+                    <div class="broker-header-right">
+            <div class="broker-reg" style="white-space:nowrap;">REG: NFA · CFTC</div>
+            <div style="display:flex;gap:4px;flex-wrap:wrap;justify-content:flex-end;margin-top:4px;"><span class="broker-exec dma">DMA · EXCHANGE</span></div>
+          </div>
         </div>
         <div class="broker-card-body">
           <p class="broker-tagline">Broker futures berbasis cloud — akses dari browser, tablet, dan mobile tanpa install. Komisi flat unlimited trading dengan biaya bulanan tetap.</p>
@@ -1052,7 +1124,7 @@
       <div class="broker-cat-header">
         <div class="broker-cat-label">FUTURES PROP FIRM</div>
         <div class="broker-cat-line"></div>
-        <div class="broker-cat-count">1 BROKER</div>
+        <div class="broker-cat-count">1 PROP FIRM</div>
       </div>
       <div class="broker-grid" style="grid-template-columns: repeat(auto-fill, minmax(340px, 420px));">
       <!-- APEX TRADER FUNDING — FUTURES PROP FIRM -->
@@ -1069,7 +1141,10 @@
               <div class="broker-location">Austin, Texas — USA</div>
             </div>
           </div>
-          <div class="broker-reg" style="white-space:nowrap;align-self:flex-start;">EVALUATION · ONE-STEP</div>
+                    <div class="broker-header-right">
+            <div class="broker-reg" style="white-space:nowrap;">EVALUATION · ONE-STEP</div>
+            <div style="display:flex;gap:4px;flex-wrap:wrap;justify-content:flex-end;margin-top:4px;"><span class="broker-exec dma">DMA · EXCHANGE</span></div>
+          </div>
         </div>
         <div class="broker-card-body">
           <p class="broker-tagline">Prop firm futures #1 dunia — trading ES, NQ, CL tanpa modal sendiri. Lolos evaluasi 1 langkah, langsung dapat funded account hingga $300.000.</p>
@@ -1268,25 +1343,40 @@
     <div class="sec-eyebrow">FAQ</div>
     <h2 class="sec-h">Pertanyaan yang <em>Sering Ditanya</em></h2>
     <div class="sec-sub" style="margin-bottom:32px;">Belum menemukan jawaban? Hubungi tim kami langsung.</div>
-    <div class="faq-grid">
-      <div class="faq-item">
-        <div class="faq-q">Apakah daftar lewat HARVESTPIPS ada biaya tambahan?</div>
+    <div class="faq-list">
+      <div class="faq-item open">
+        <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="true">
+          Apakah daftar lewat HARVESTPIPS ada biaya tambahan?
+          <span class="faq-icon"><svg viewBox="0 0 8 8" fill="none"><path d="M4 1V7M1 4H7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span>
+        </button>
         <div class="faq-a">Tidak ada. Daftar melalui link IB kami sepenuhnya gratis — bahkan Anda mendapat keuntungan lebih berupa rebate yang tidak ada jika daftar langsung.</div>
       </div>
       <div class="faq-item">
-        <div class="faq-q">Apakah rebate bisa langsung dicairkan?</div>
+        <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">
+          Apakah rebate bisa langsung dicairkan?
+          <span class="faq-icon"><svg viewBox="0 0 8 8" fill="none"><path d="M4 1V7M1 4H7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span>
+        </button>
         <div class="faq-a">Ya, rebate dapat dicairkan ke rekening bank Indonesia sesuai jadwal pencairan masing-masing broker (umumnya mingguan atau bulanan).</div>
       </div>
       <div class="faq-item">
-        <div class="faq-q">Bagaimana jika saya sudah punya akun di broker tersebut?</div>
+        <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">
+          Bagaimana jika saya sudah punya akun di broker tersebut?
+          <span class="faq-icon"><svg viewBox="0 0 8 8" fill="none"><path d="M4 1V7M1 4H7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span>
+        </button>
         <div class="faq-a">Untuk menikmati program rebate IB, umumnya diperlukan akun baru yang didaftarkan melalui link referral kami. Hubungi kami untuk opsi migrasi akun.</div>
       </div>
       <div class="faq-item">
-        <div class="faq-q">Apakah perlu ikut mentoring untuk daftar sebagai klien IB?</div>
+        <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">
+          Apakah perlu ikut mentoring untuk daftar sebagai klien IB?
+          <span class="faq-icon"><svg viewBox="0 0 8 8" fill="none"><path d="M4 1V7M1 4H7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span>
+        </button>
         <div class="faq-a">Tidak wajib, namun sangat direkomendasikan. Klien IB yang mengikuti program mentoring HARVESTPIPS terbukti memiliki konsistensi trading yang lebih baik.</div>
       </div>
       <div class="faq-item">
-        <div class="faq-q">Apakah broker partner HARVESTPIPS aman untuk trader Indonesia?</div>
+        <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">
+          Apakah broker partner HARVESTPIPS aman untuk trader Indonesia?
+          <span class="faq-icon"><svg viewBox="0 0 8 8" fill="none"><path d="M4 1V7M1 4H7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span>
+        </button>
         <div class="faq-a">Ya. Kami hanya bermitra dengan broker berlisensi resmi, mendukung pembayaran via bank lokal, dan memiliki rekam jejak baik di komunitas trader Indonesia.</div>
       </div>
     </div>
@@ -1329,8 +1419,8 @@
         <div class="ft-col-h">KONTAK</div>
         <a class="ft-link" href="#">Lampung Tengah</a>
         <a class="ft-link" href="https://t.me/harvestpips_com">Telegram</a>
-        <a class="ft-link" href="#">Instagram</a>
-        <a class="ft-link" href="#">LinkedIn</a>
+        <a class="ft-link" href="https://instagram.com/harvestpips_com" target="_blank" rel="noopener">Instagram</a>
+        <a class="ft-link" href="https://youtube.com/@harvestpips_com" target="_blank" rel="noopener">YouTube</a>
       </div>
     </div>
     <div class="footer-bot">
@@ -1340,6 +1430,22 @@
   </footer>
 
   <script>
+    // FAQ Accordion
+    function toggleFaq(el) {
+      const item = el.parentElement;
+      const isOpen = item.classList.contains('open');
+      // Close all
+      document.querySelectorAll('.faq-item').forEach(i => {
+        i.classList.remove('open');
+        i.querySelector('.faq-q').setAttribute('aria-expanded', 'false');
+      });
+      // Open clicked (if it was closed)
+      if (!isOpen) {
+        item.classList.add('open');
+        el.setAttribute('aria-expanded', 'true');
+      }
+    }
+
     // Scroll animation dengan fallback untuk browser lama
     if ('IntersectionObserver' in window) {
       const observer = new IntersectionObserver((entries) => {
